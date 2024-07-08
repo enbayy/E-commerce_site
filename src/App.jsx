@@ -1,15 +1,12 @@
-import { useState } from 'react'
+import React from 'react';
+import AppRouter from './routing/Router.jsx';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-
-      kontrol
-
-    </>
-  )
+    <div className="App">
+      <AppRouter />
+    </div>
+  );
 }
 
-export default App
+export default App;
