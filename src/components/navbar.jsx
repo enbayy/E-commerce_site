@@ -1,10 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
 
 function Navbar() {
     return (
         <div>
-            <Link to="/Contact">Contact</Link>
+            <a href="/contact">Contact</a>
         </div>
     )
 }

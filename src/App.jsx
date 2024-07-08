@@ -1,13 +1,16 @@
-import React from 'react';
-import AppRouter from './routing/Router';
-import Navbar from './components/navbar';
 
+import React from 'react';
+import { RouterProvider } from 'react-router-dom';
+import router from './routing/routes';
+import Navbar from './components/navbar';
+import Contact from './pages/Contact';
 
 function App() {
   return (
-    <div className="App">
-      <Navbar/>
-      <AppRouter />
+    <div>
+       <Navbar />
+      <RouterProvider router={router} />
+     
     </div>
   );
 }

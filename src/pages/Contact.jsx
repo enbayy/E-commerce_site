@@ -1,7 +1,14 @@
+// About.js
+
 import React from 'react';
 
-const Contact = () => {
-  return <h1>Contact Page</h1>;
-};
+function Contact() {
+  return (
+    <div>
+      <h2>Contact Page</h2>
+      <p>This is the About Page.</p>
+    </div>
+  );
+}
 
 export default Contact;
