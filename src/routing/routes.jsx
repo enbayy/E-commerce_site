@@ -1,21 +1,19 @@
-import React from 'react'
-import { createBrowserRouter } from "react-router-dom";
-import Home from '../pages/Home.jsx';
-import Contact from '../pages/Contact.jsx';
+import { lazy } from "react";
+import { delayImport } from "../components/delayImport.jsx";
+import MainLayout from "../layout/MainLayout/MainLayout.jsx";
 
-const router = createBrowserRouter([
+const Contact = lazy(() => import("../pages/ContactPage/Contact.jsx"));
+const Home = lazy(() => import("../pages/HomePage/Home.jsx"));
+
+export const routes = [
     {
         id: 1,
-        path: '/',
+        path: "/",
         element: <Home />,
-        children: [
-            {
-                id: 2,
-                path: '/contact',
-                element: <Contact />,
-            }
-        ]
-    }
-]);
-
-export default router;
+    },
+    {
+        id: 2,
+        path: "contact",
+        element: <Contact />,
+    },
+]
