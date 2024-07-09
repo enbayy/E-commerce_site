@@ -5,7 +5,6 @@ import { Helmet } from "react-helmet";
 const { Header, Footer, Content } = Layout;
 const MainLayout = ({ header, content, footer, title }) => {
 
-
     return (
         <>
             <Helmet>
@@ -14,9 +13,7 @@ const MainLayout = ({ header, content, footer, title }) => {
             </Helmet>
             <Layout>
                 <Header>
-                    {
-                        header
-                    }
+                    {header}
                 </Header>
                 <Content>
                     {content}
@@ -24,7 +21,6 @@ const MainLayout = ({ header, content, footer, title }) => {
                 <Footer>
                     {footer}
                 </Footer>
-
             </Layout>
         </>
     )

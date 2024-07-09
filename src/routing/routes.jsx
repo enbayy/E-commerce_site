@@ -6,6 +6,7 @@ const Category = lazy(() => import("../pages/CategoryPage/Category.jsx"));
 const Login = lazy(() => import("../pages/LoginPage/Login.jsx"));
 const Skep = lazy(() => import("../pages/SkepPage/Skep.jsx"));
 const Favorite = lazy(() => import("../pages/FavoritePage/Favorite.jsx"));
+const NotFound = lazy(() => import("../pages/NotFoundPage/NotFound.jsx"));
 
 export const routes = [
     {
@@ -29,13 +30,18 @@ export const routes = [
         element: <Login />,
     },
     {
-        id: 4,
+        id: 5,
         path: "skep",
         element: <Skep />,
     },
     {
-        id: 5,
+        id: 6,
         path: "favorite",
         element: <Favorite />,
+    },
+    {
+        id: 7,
+        path: "*",
+        element: <NotFound />,
     },
 ]
