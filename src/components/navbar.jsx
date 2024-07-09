@@ -9,14 +9,35 @@ function Navbar() {
         <>
             <Space>
                 <Link
-                    to="/contact"
-                >
-                    contact
-                </Link>
-                <Link
                     to="/"
                 >
-                    home
+                    Home
+                </Link>
+                <Link
+                    to="/contact"
+                >
+                    Contact
+                </Link>
+                <Link
+                    to="/category"
+                >
+                    Categories
+                </Link>
+
+                <Link
+                    to="/login"
+                >
+                    Login
+                </Link>
+                <Link
+                    to="/skep"
+                >
+                    Skep
+                </Link>
+                <Link
+                    to="/favorite"
+                >
+                    Favorites
                 </Link>
             </Space>
         </>

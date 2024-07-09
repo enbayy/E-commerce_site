@@ -2,18 +2,18 @@ import React from 'react';
 import MainLayout from '../../layout/MainLayout/MainLayout';
 import Navbar from '../../components/navbar';
 
-const ContactContainer = () => {
+const LoginContainer = () => {
   return (
     <div>
-      Contact
+      Login Page
     </div>
   )
 }
 
-function Contact() {
+function Login() {
   return (
-    <MainLayout content={<ContactContainer />} header={<Navbar />} title={"Contact"} />
+    <MainLayout content={<LoginContainer />} header={<Navbar />} title={"Login"} />
   );
 }
 
-export default Contact;
+export default Login;

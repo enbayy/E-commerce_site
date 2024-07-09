@@ -2,13 +2,11 @@ import React from 'react';
 import MainLayout from '../../layout/MainLayout/MainLayout';
 import Navbar from '../../components/navbar';
 
-
 const HomeContainer = () => {
   return (
     <div>Home</div>
   )
 }
-
 
 function Home(props) {
   console.log(props)
@@ -20,7 +18,4 @@ function Home(props) {
   );
 }
 
-
 export default Home;
-
-
