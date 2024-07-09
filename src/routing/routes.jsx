@@ -5,12 +5,16 @@ import Contact from '../pages/Contact.jsx';
 
 const router = createBrowserRouter([
     {
+        id: 1,
         path: '/',
         element: <Home />,
-    },
-    {
-        path: '/contact',
-        element: <Contact />,
+        children: [
+            {
+                id: 2,
+                path: '/contact',
+                element: <Contact />,
+            }
+        ]
     }
 ]);
 

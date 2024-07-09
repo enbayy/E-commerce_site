@@ -1,18 +1,31 @@
+import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import MainLayout from "./MainLayout";
+import { lazy } from "react";
+import { delayImport } from "./components/delayImport";
 
-import React from 'react';
-import { RouterProvider } from 'react-router-dom';
-import router from './routing/routes';
-import Navbar from './components/navbar';
-import Contact from './pages/Contact';
+const Home = lazy(() => import("./pages/Home"));
+const Contact = lazy(() => delayImport(() => import("./pages/Contact"), 2000));
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "contact",
+        element: <Contact />,
+      },
+    ],
+  },
+]);
 
 function App() {
-  return (
-    <div>
-       <Navbar />
-      <RouterProvider router={router} />
-     
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
