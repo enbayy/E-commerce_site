@@ -1,6 +1,6 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import MainLayout from "./MainLayout";
+import MainLayout from "./layout/MainLayout";
 import { lazy } from "react";
 import { delayImport } from "./components/delayImport";
 
