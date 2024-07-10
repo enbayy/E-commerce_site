@@ -3,7 +3,6 @@ import { Button, Result, Typography } from 'antd';
 const { Paragraph, Text } = Typography;
 import React from 'react'
 
-
 export class ErrorBoundaryPage extends React.Component {
     state = { error: false, errorMsg: "", errorStack: "" };
 
