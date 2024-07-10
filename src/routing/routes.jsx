@@ -1,4 +1,6 @@
 import { lazy } from "react";
+import { ROUTES_ID } from "./routes_id.js";
+import Register from "../pages/RegisterPage/Register.jsx";
 
 const Contact = lazy(() => import("../pages/ContactPage/Contact.jsx"));
 const Home = lazy(() => import("../pages/HomePage/Home.jsx"));
@@ -10,38 +12,51 @@ const NotFound = lazy(() => import("../pages/NotFoundPage/NotFound.jsx"));
 
 export const routes = [
     {
-        id: 1,
+        id: ROUTES_ID.home,
         path: "/",
         element: <Home />,
     },
     {
-        id: 2,
-        path: "contact",
+        id: ROUTES_ID.contact,
+        path: "/contact",
         element: <Contact />,
     },
     {
-        id: 3,
-        path: "category",
+        id: ROUTES_ID.category,
+        path: "/category",
         element: <Category />,
     },
     {
-        id: 4,
-        path: "login",
+        id: ROUTES_ID.login,
+        path: "/login",
         element: <Login />,
     },
     {
-        id: 5,
-        path: "skep",
+        id: ROUTES_ID.skep,
+        path: "/skep",
         element: <Skep />,
     },
     {
-        id: 6,
-        path: "favorite",
+        id: ROUTES_ID.favorite,
+        path: "/favorite",
         element: <Favorite />,
     },
     {
-        id: 7,
+        id: ROUTES_ID.notfound,
         path: "*",
         element: <NotFound />,
     },
+    {
+        id: ROUTES_ID.register,
+        path: "/register",
+        element: <Register />,
+    },
 ]
+
+export const getRoutePath = (id) => {
+    return routes.find(route => route.id === id).path;
+}
+
+export const getRouteTitle = (pathname) => {
+    return routes.find(route => route.path === pathname).title;
+}
