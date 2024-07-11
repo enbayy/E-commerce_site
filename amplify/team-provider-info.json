@@ -10,6 +10,11 @@
       "StackName": "amplify-eticaret-dev-4b31c",
       "StackId": "arn:aws:cloudformation:us-east-1:992382687974:stack/amplify-eticaret-dev-4b31c/ecd9b770-3d1a-11ef-a930-126e96a77eef",
       "AmplifyAppId": "d6v16ghsp1ilr"
+    },
+    "categories": {
+      "auth": {
+        "eticaretcc9ef984": {}
+      }
     }
   }
 }

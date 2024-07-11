@@ -1,33 +1,36 @@
 import React from 'react';
-import MainLayout from "../../layout/MainLayoutPage/MainLayout"
-import Navbar from '../../components/navbar';
+import MainLayout from "../../layout/MainLayoutPage/MainLayout";
 import { Button, Result } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { getRoutePath } from '../../routing/routes';
+import { ROUTES_ID } from '../../routing/routes_id';
+import './NotFound.css';
 
 const NotFoundContainer = () => {
-
     const navigate = useNavigate();
+
     const handleNavigate = () => {
-        navigate("/")
-    }
+        navigate(getRoutePath(ROUTES_ID.home));
+    };
 
     return (
-        <div>
+        <div className="fullscreen-container">
             <Result
-                status="403"
-                title="403"
-                subTitle="Sorry, you are not authorized to access this page."
+                status="404"
+                title="404"
+                subTitle="Sorry, the page you visited does not exist."
                 extra={<Button onClick={handleNavigate} type="primary">Back Home</Button>}
             />
         </div>
-    )
-}
+    );
+};
 
 function NotFound() {
     return (
-        <MainLayout content={<NotFoundContainer />} header={<Navbar />} title={"Not Found Page"} />
-    )
+        <div className="fullscreen-wrapper">
+            <MainLayout content={<NotFoundContainer />} title={"Not Found Page"} />
+        </div>
+    );
 }
 
 export default NotFound;

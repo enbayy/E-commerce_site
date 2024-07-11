@@ -1,6 +1,8 @@
 import React from 'react';
 import MainLayout from '../../layout/MainLayoutPage/MainLayout';
 import Navbar from '../../components/navbar';
+import { useLocation } from 'react-router-dom';
+import { getRouteTitle } from '../../routing/routes';
 
 const SkepContainer = () => {
     return (
@@ -11,8 +13,10 @@ const SkepContainer = () => {
 }
 
 function Skep() {
+    const location = useLocation();
+    const title = getRouteTitle(location.pathname);
     return (
-        <MainLayout content={<SkepContainer />} header={<Navbar />} title={"Skep"} />
+        <MainLayout content={<SkepContainer />} header={<Navbar />} title={title} />
     );
 }
 

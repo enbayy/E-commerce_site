@@ -6,5 +6,6 @@ export const ROUTES_ID = {
     skep: "skep",
     favorite: "favorite",
     notfound: "notfound",
-    register: "register"
+    register: "register",
+    forgotpassword: "forgotpassword",
 }

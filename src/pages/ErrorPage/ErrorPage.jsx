@@ -1,13 +1,11 @@
-import { CloseCircleOutlined } from '@ant-design/icons';
-import { Button, Result, Typography } from 'antd';
-const { Paragraph, Text } = Typography;
-import React from 'react'
+import React from 'react';
+import { Button, Result } from 'antd';
 
 export class ErrorBoundaryPage extends React.Component {
     state = { error: false, errorMsg: "", errorStack: "" };
 
     static getDerivedStateFromError(error) {
-        return { error };
+        return { error: true };
     }
 
     componentDidCatch(error) {
@@ -16,41 +14,26 @@ export class ErrorBoundaryPage extends React.Component {
     }
 
     render() {
-        return this.state.error ? (
-            <div>
-                <Result
-                    status="error"
-                    title="Submission Failed"
-                    subTitle="Please check and modify the following information before resubmitting."
-                    extra={[
-                        <Button type="primary" key="console">
-                            Go Console
-                        </Button>,
-                        <Button key="buy">Buy Again</Button>,
-                    ]}
-                >
-                    <div className="desc">
-                        <Paragraph>
-                            <Text
-                                strong
-                                style={{
-                                    fontSize: 16,
-                                }}
-                            >
-                                The content you submitted has the following error:
-                            </Text>
-                        </Paragraph>
-                        <Paragraph>
-                            <CloseCircleOutlined className="site-result-demo-error-icon" /> Your account has been
-                            frozen. Thaw immediately.
-                        </Paragraph>
-                        <Paragraph>
-                            <CloseCircleOutlined className="site-result-demo-error-icon" /> Your account is not yet
-                            eligible to apply. Apply Unlock.
-                        </Paragraph>
-                    </div>
-                </Result>
-            </div>
+        const { error, errorMsg, errorStack } = this.state;
+        const { fallback = "The content you submitted has the following error:" } = this.props;
+
+        return error ? (
+            <Result
+                status="error"
+                title="Submission Failed"
+                subTitle="Please check and modify the following information before resubmitting."
+                extra={[
+                    <Button type="primary" key="console">
+                        Go Home
+                    </Button>,
+                ]}
+            >
+                <div className="desc">
+                    <h3>{fallback}</h3>
+                    <p>{JSON.stringify(errorMsg, null, 4)}</p>
+                    <p>{JSON.stringify(errorStack, null, 4)}</p>
+                </div>
+            </Result>
         ) : (
             <>{this.props.children}</>
         );

@@ -10,22 +10,22 @@ function Navbar() {
         <>
             <Space>
                 <Link to={getRoutePath(ROUTES_ID.home)}>
-                    Anasayfa
+                    Home
                 </Link>
                 <Link to={getRoutePath(ROUTES_ID.contact)}>
-                    İletişim
+                    Contact
                 </Link>
                 <Link to={getRoutePath(ROUTES_ID.category)}>
-                    Kategoriler
+                    Categories
                 </Link>
                 <Link to={getRoutePath(ROUTES_ID.login)}>
-                    Giriş Yap
+                    Login
                 </Link>
                 <Link to={getRoutePath(ROUTES_ID.skep)}>
-                    Sepet
+                    Skep
                 </Link>
                 <Link to={getRoutePath(ROUTES_ID.favorite)}>
-                    Favoriler
+                    Favorites
                 </Link>
             </Space>
         </>
