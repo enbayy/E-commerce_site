@@ -1,8 +1,8 @@
 import { resetPassword } from 'aws-amplify/auth';
 
-async function handleResetPassword(username) {
+async function handleResetPassword(email) {
     try {
-        const output = await resetPassword({ username });
+        const output = await resetPassword({ username: email });
         handleResetPasswordNextSteps(output);
     } catch (error) {
         console.log(error);

@@ -1,7 +1,7 @@
 import React from 'react';
 import MainLayout from '../../layout/MainLayoutPage/MainLayout';
 import Navbar from '../../components/navbar';
-import ContactForm from './ContactForm';
+import ContactForm from './pageComponents/ContactForm/ContactForm';
 import { useLocation } from 'react-router-dom';
 import { getRouteTitle } from '../../routing/routes';
 

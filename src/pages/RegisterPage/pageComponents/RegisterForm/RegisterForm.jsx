@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Form, Input, Button } from 'antd';
-import handleSignUp from '../../../../utils/SignUp';
-import '../../Register.css';
+import handleSignUp from '@/utils/SignUp';
 import { useNavigate } from 'react-router-dom';
-import { getRoutePath } from '../../../../routing/routes';
-import { ROUTES_ID } from '../../../../routing/routes_id';
-
-
+import { getRoutePath } from '@/routing/routes';
+import { ROUTES_ID } from '@/routing/routes_id';
+import '../../Register.css';
 
 const formItemLayout = {
     labelCol: {
@@ -36,12 +34,14 @@ const RegisterForm = ({ onFinish }) => {
 
     const navigate = useNavigate();
     const handleGoLogin = () => {
-        navigate(getRoutePath(ROUTES_ID.login))
-    }
+        navigate(getRoutePath(ROUTES_ID.login));
+    };
 
     return (
         <div className='register-container'>
-            <Form layout='vertical'
+            <Form
+                className='register-form'
+                layout='vertical'
                 {...formItemLayout}
                 form={form}
                 name="register"
@@ -64,10 +64,11 @@ const RegisterForm = ({ onFinish }) => {
                             whitespace: true,
                         },
                     ]}
+                    className="register-form-item"
+                    style={{ width: '100%' }}
                 >
-                    <Input />
+                    <Input style={{ width: '100%' }} />
                 </Form.Item>
-
 
                 <Form.Item
                     name="email"
@@ -82,8 +83,10 @@ const RegisterForm = ({ onFinish }) => {
                             message: 'Please input your E-mail!',
                         },
                     ]}
+                    className="register-form-item"
+                    style={{ width: '100%' }}
                 >
-                    <Input />
+                    <Input style={{ width: '100%' }} />
                 </Form.Item>
 
                 <Form.Item
@@ -94,10 +97,34 @@ const RegisterForm = ({ onFinish }) => {
                             required: true,
                             message: 'Please input your password!',
                         },
+                        {
+                            validator(_, value) {
+                                if (!value) {
+                                    return Promise.reject(new Error('Please input your password!'));
+                                }
+                                if (value.length < 8) {
+                                    return Promise.reject(new Error('Password must be at least 8 characters long!'));
+                                }
+                                if (!/[a-z]/.test(value)) {
+                                    return Promise.reject(new Error('Password must contain at least one lowercase letter!'));
+                                }
+                                if (!/[A-Z]/.test(value)) {
+                                    return Promise.reject(new Error('Password must contain at least one uppercase letter!'));
+                                }
+                                if (!/[0-9]/.test(value)) {
+                                    return Promise.reject(new Error('Password must contain at least one number!'));
+                                }
+                                if (!/[!@#$%^&*(),.?":{}|<>]/.test(value)) {
+                                    return Promise.reject(new Error('Password must contain at least one special character!'));
+                                }
+                                return Promise.resolve();
+                            },
+                        },
                     ]}
                     hasFeedback
+                    style={{ width: '100%' }}
                 >
-                    <Input.Password />
+                    <Input.Password style={{ width: '100%' }} />
                 </Form.Item>
 
                 <Form.Item
@@ -119,15 +146,17 @@ const RegisterForm = ({ onFinish }) => {
                             },
                         }),
                     ]}
+                    className="register-form-item"
+                    style={{ width: '100%' }}
                 >
-                    <Input.Password />
+                    <Input.Password style={{ width: '100%' }} />
                 </Form.Item>
 
                 <Form.Item {...tailFormItemLayout}>
                     <Button type="primary" htmlType="submit">
                         Register
                     </Button>
-                    <Button type="primary" htmlType="submit" onClick={handleGoLogin}>
+                    <Button type="default" onClick={handleGoLogin}>
                         Go Login
                     </Button>
                 </Form.Item>

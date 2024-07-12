@@ -3,12 +3,12 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input } from 'antd';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { getRoutePath } from '../../routing/routes';
-import { ROUTES_ID } from '../../routing/routes_id';
-import login from '../../utils/login';
+import { getRoutePath } from '@/routing/routes';
+import { ROUTES_ID } from '@/routing/routes_id';
+import login from '@/utils/login';
 
 
-const LoginForm = ({ onFinish }) => {
+const LoginForm = () => {
     const handleFinish = (values) => {
         login({ email: values.email, password: values.password })
     };
@@ -32,12 +32,16 @@ const LoginForm = ({ onFinish }) => {
                     name="email"
                     rules={[
                         {
+                            type: 'email',
+                            message: 'The input is not valid E-mail!',
+                        },
+                        {
                             required: true,
                             message: 'Please input your email!',
                         },
                     ]}
                 >
-                    <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+                    <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" />
                 </Form.Item>
                 <Form.Item
                     name="password"

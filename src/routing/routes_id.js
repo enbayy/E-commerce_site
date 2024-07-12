@@ -8,4 +8,5 @@ export const ROUTES_ID = {
     notfound: "notfound",
     register: "register",
     forgotpassword: "forgotpassword",
+    private: "private"
 }

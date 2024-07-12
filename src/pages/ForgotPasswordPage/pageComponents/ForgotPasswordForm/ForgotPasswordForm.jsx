@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 import { Form, Input, Button } from 'antd';
 
-import './ForgotPassword.css';
+import '../../ForgotPassword.css';
 import { useNavigate } from 'react-router-dom';
-import { getRoutePath } from '../../routing/routes';
-import { ROUTES_ID } from '../../routing/routes_id';
-import handleResetPassword from '../../utils/forgot';
+import { getRoutePath } from '../../../../routing/routes';
+import { ROUTES_ID } from '../../../../routing/routes_id';
+import handleResetPassword from '../../../../utils/forgotResetPassword';
+
 
 const ForgotPasswordForm = ({ onFinish }) => {
     const [email, setEmail] = useState('');
-
-
-    const handleFormSubmit = (values) => {
-        handleResetPassword(values.email)
-    };
-
     const navigate = useNavigate();
+    const handleFinish = (values) => {
+        handleResetPassword(values.email)
+    }
+
     const handleBack = () => {
         navigate(getRoutePath(ROUTES_ID.login))
     }
@@ -25,7 +24,7 @@ const ForgotPasswordForm = ({ onFinish }) => {
             <div className="forgot-password-form">
                 <Form
                     name="forgot_password"
-                    onFinish={handleFormSubmit}
+                    onFinish={handleFinish}
                 >
                     <Form.Item
                         name="email"
@@ -45,9 +44,7 @@ const ForgotPasswordForm = ({ onFinish }) => {
                     </Form.Item>
 
                     <Form.Item>
-                        <div style={{ flexDirection: "column", display: "flex", alignItems: "center", justifyContent: "center" }}>
-
-
+                        <div className='forgotPasswordButton'>
                             <Button type="primary" htmlType="submit">
                                 Reset Password
                             </Button>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Form, Input, Select } from 'antd';
-import "./Contact.css"
+import "../../Contact.css"
 
 const layout = {
     labelCol: {

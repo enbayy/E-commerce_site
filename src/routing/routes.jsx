@@ -10,7 +10,7 @@ const Favorite = lazy(() => import("../pages/FavoritePage/Favorite.jsx"));
 const NotFound = lazy(() => import("../pages/NotFoundPage/NotFound.jsx"));
 const Register = lazy(() => import("../pages/RegisterPage/Register.jsx"));
 const ForgotPassword = lazy(() => import("../pages/ForgotPasswordPage/ForgotPassword.jsx"));
-const ConfirmSignUp = lazy(() => import("../utils/ConfirmSignUp.jsx"));
+const Private = lazy(() => import("../pages/PrivatePage/Private.jsx"));
 
 export const routes = [
     {
@@ -66,6 +66,12 @@ export const routes = [
         path: "/forgotpassword",
         element: <ForgotPassword />,
         title: "Forgot Password"
+    },
+    {
+        id: ROUTES_ID.private,
+        path: "/private",
+        element: <Private />,
+        title: "Private"
     },
 ]
 
