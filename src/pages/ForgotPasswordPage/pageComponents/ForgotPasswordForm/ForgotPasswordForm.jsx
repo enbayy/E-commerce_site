@@ -1,62 +1,45 @@
 import React, { useState } from 'react';
-import { Form, Input, Button } from 'antd';
-
-import '../../ForgotPassword.css';
+import { Form, Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import { getRoutePath } from '../../../../routing/routes';
-import { ROUTES_ID } from '../../../../routing/routes_id';
+import '../../ForgotPassword.css';
 import handleResetPassword from '../../../../utils/forgotResetPassword';
+import EmailInput from '../../../../components/EmailInput';
 
-
-const ForgotPasswordForm = ({ onFinish }) => {
-    const [email, setEmail] = useState('');
+function ForgotPasswordForm({ onFinish, initialValues }) {
+    const [email, setEmail] = useState(initialValues?.email || '');
     const navigate = useNavigate();
-    const handleFinish = (values) => {
-        handleResetPassword(values.email)
-    }
 
-    const handleBack = () => {
-        navigate(getRoutePath(ROUTES_ID.login))
-    }
+    const handleFinish = async (values) => {
+        const success = await handleResetPassword(values.email);
+        if (success) {
+            onFinish(values);
+        } else {
+            console.log('Failed to send reset code.');
+        }
+    };
 
     return (
-        <div className="forgot-password-container">
-            <div className="forgot-password-form">
-                <Form
-                    name="forgot_password"
-                    onFinish={handleFinish}
-                >
-                    <Form.Item
-                        name="email"
-                        label="E-mail"
-                        rules={[
-                            {
-                                type: 'email',
-                                message: 'The input is not valid E-mail!',
-                            },
-                            {
-                                required: true,
-                                message: 'Please input your E-mail!',
-                            },
-                        ]}
-                    >
-                        <Input value={email} onChange={(e) => setEmail(e.target.value)} />
-                    </Form.Item>
+        <Form
+            name="forgot_password"
+            onFinish={handleFinish}
+            layout='vertical'
+            initialValues={{ email }}
+        >
+            <EmailInput
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+            />
 
-                    <Form.Item>
-                        <div className='forgotPasswordButton'>
-                            <Button type="primary" htmlType="submit">
-                                Reset Password
-                            </Button>
-                            <Button onClick={handleBack}>
-                                Back
-                            </Button>
-                        </div>
-                    </Form.Item>
-                </Form>
-            </div>
-        </div>
+            <Form.Item>
+                <div className='forgotPasswordButton'>
+                    <Button type="primary" htmlType="submit">
+                        Send Code
+                    </Button>
+                    <a href="/login">Go Login</a>
+                </div>
+            </Form.Item>
+        </Form>
     );
-};
+}
 
-export default ForgotPasswordForm;
+export default ForgotPasswordForm

@@ -6,14 +6,25 @@ import { useNavigate } from 'react-router-dom';
 import { getRoutePath } from '@/routing/routes';
 import { ROUTES_ID } from '@/routing/routes_id';
 import login from '@/utils/login';
-
+import EmailInput from '../../../../components/EmailInput';
+import PasswordInput from '../../../../components/PasswordInput';
 
 const LoginForm = () => {
-    const handleFinish = (values) => {
-        login({ email: values.email, password: values.password })
-    };
 
     const navigate = useNavigate();
+
+    const handleFinish = async (values) => {
+        try {
+            await login({
+                email: values.email,
+                password: values.password
+            });
+            navigate(getRoutePath(ROUTES_ID.home))
+        } catch (error) {
+            console.error('Login failed:', error);
+        }
+    };
+
     const handleGoLogin = () => {
         navigate(getRoutePath(ROUTES_ID.forgotpassword))
     }
@@ -23,37 +34,20 @@ const LoginForm = () => {
             <Form
                 name="normal_login"
                 className="login-form"
+                layout='vertical'
                 initialValues={{
                     remember: true,
                 }}
                 onFinish={handleFinish}
             >
-                <Form.Item
-                    name="email"
-                    rules={[
-                        {
-                            type: 'email',
-                            message: 'The input is not valid E-mail!',
-                        },
-                        {
-                            required: true,
-                            message: 'Please input your email!',
-                        },
-                    ]}
-                >
-                    <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" />
-                </Form.Item>
-                <Form.Item
-                    name="password"
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please input your Password!',
-                        },
-                    ]}
-                >
-                    <Input.Password prefix={<LockOutlined className="site-form-item-icon" />} placeholder="Password" />
-                </Form.Item>
+                <EmailInput
+                    prefix={<UserOutlined className="site-form-item-icon" />}
+                />
+                <PasswordInput
+                    name={"password"}
+                    label={"Password"}
+                    prefix={<LockOutlined className="site-form-item-icon" />}
+                />
                 <Form.Item>
                     <Form.Item name="remember" valuePropName="checked" noStyle>
                         <Checkbox>Remember me</Checkbox>

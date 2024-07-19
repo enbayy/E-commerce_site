@@ -1,5 +1,6 @@
 import { lazy } from "react";
 import { ROUTES_ID } from "./routes_id.js";
+import { CheckAuthLoader } from "../utils/CheckAuthLoader.jsx";
 
 const Contact = lazy(() => import("../pages/ContactPage/Contact.jsx"));
 const Home = lazy(() => import("../pages/HomePage/Home.jsx"));
@@ -10,32 +11,35 @@ const Favorite = lazy(() => import("../pages/FavoritePage/Favorite.jsx"));
 const NotFound = lazy(() => import("../pages/NotFoundPage/NotFound.jsx"));
 const Register = lazy(() => import("../pages/RegisterPage/Register.jsx"));
 const ForgotPassword = lazy(() => import("../pages/ForgotPasswordPage/ForgotPassword.jsx"));
-const Private = lazy(() => import("../pages/PrivatePage/Private.jsx"));
+const Profile = lazy(() => import("../pages/ProfilePage/Profile.jsx"));
 
 export const routes = [
     {
         id: ROUTES_ID.home,
         path: "/",
         element: <Home />,
-        title: "Home"
+        title: "Home",
+        loader: CheckAuthLoader,
     },
     {
         id: ROUTES_ID.contact,
         path: "/contact",
         element: <Contact />,
-        title: "Contact"
+        title: "Contact",
     },
     {
         id: ROUTES_ID.category,
         path: "/category",
         element: <Category />,
-        title: "Category"
+        title: "Category",
+        loader: CheckAuthLoader,
     },
     {
         id: ROUTES_ID.login,
         path: "/login",
         element: <Login />,
-        title: "Login"
+        title: "Login",
+        loader: CheckAuthLoader,
     },
     {
         id: ROUTES_ID.skep,
@@ -59,26 +63,30 @@ export const routes = [
         id: ROUTES_ID.register,
         path: "/register",
         element: <Register />,
-        title: "Register"
+        title: "Register",
+        loader: CheckAuthLoader,
     },
     {
         id: ROUTES_ID.forgotpassword,
         path: "/forgotpassword",
         element: <ForgotPassword />,
-        title: "Forgot Password"
+        title: "Forgot Password",
     },
     {
-        id: ROUTES_ID.private,
-        path: "/private",
-        element: <Private />,
-        title: "Private"
+        id: ROUTES_ID.profile,
+        path: "/profile",
+        element: <Profile />,
+        title: "Profile",
+        loader: CheckAuthLoader,
     },
 ]
 
 export const getRoutePath = (id) => {
-    return routes.find(route => route.id === id).path;
+    const route = routes.find(route => route.id === id);
+    return route ? route.path : "/";
 }
 
 export const getRouteTitle = (pathname) => {
-    return routes.find(route => route.path === pathname).title;
+    const route = routes.find(route => route.path === pathname);
+    return route ? route.title : "Not Found";
 }

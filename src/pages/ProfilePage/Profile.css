@@ -1,0 +1,51 @@
+html,
+body,
+#root {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.saved-data-container {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    background-color: #f0f2f5;
+    padding: 20px;
+    overflow-y: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    margin: 0 auto;
+}
+
+.profile-form {
+    width: 100%;
+    max-width: 400px;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.profile-form .ant-form-item {
+    margin-bottom: 16px;
+}
+
+.profile-form .ant-form-item label {
+    font-weight: bold;
+}

@@ -1,10 +1,13 @@
 import React from 'react';
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, notification } from 'antd';
 import handleSignUp from '@/utils/SignUp';
 import { useNavigate } from 'react-router-dom';
 import { getRoutePath } from '@/routing/routes';
 import { ROUTES_ID } from '@/routing/routes_id';
 import '../../Register.css';
+import EmailInput from '../../../../components/EmailInput';
+import PasswordInput from '../../../../components/PasswordInput';
+import ConfirmPassword from '../../../../components/ConfirmPassword';
 
 const formItemLayout = {
     labelCol: {
@@ -28,7 +31,11 @@ const RegisterForm = ({ onFinish }) => {
     const [form] = Form.useForm();
 
     const handleFormSubmit = (values) => {
-        handleSignUp({ username: values.username, email: values.email, password: values.password });
+        handleSignUp({
+            username: values.username,
+            email: values.email,
+            password: values.password
+        });
         onFinish(values);
     };
 
@@ -70,87 +77,19 @@ const RegisterForm = ({ onFinish }) => {
                     <Input style={{ width: '100%' }} />
                 </Form.Item>
 
-                <Form.Item
-                    name="email"
-                    label="E-mail"
-                    rules={[
-                        {
-                            type: 'email',
-                            message: 'The input is not valid E-mail!',
-                        },
-                        {
-                            required: true,
-                            message: 'Please input your E-mail!',
-                        },
-                    ]}
-                    className="register-form-item"
-                    style={{ width: '100%' }}
-                >
-                    <Input style={{ width: '100%' }} />
-                </Form.Item>
+                <EmailInput
+                    value={""}
+                    onChange={""}
+                />
 
-                <Form.Item
-                    name="password"
-                    label="Password"
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please input your password!',
-                        },
-                        {
-                            validator(_, value) {
-                                if (!value) {
-                                    return Promise.reject(new Error('Please input your password!'));
-                                }
-                                if (value.length < 8) {
-                                    return Promise.reject(new Error('Password must be at least 8 characters long!'));
-                                }
-                                if (!/[a-z]/.test(value)) {
-                                    return Promise.reject(new Error('Password must contain at least one lowercase letter!'));
-                                }
-                                if (!/[A-Z]/.test(value)) {
-                                    return Promise.reject(new Error('Password must contain at least one uppercase letter!'));
-                                }
-                                if (!/[0-9]/.test(value)) {
-                                    return Promise.reject(new Error('Password must contain at least one number!'));
-                                }
-                                if (!/[!@#$%^&*(),.?":{}|<>]/.test(value)) {
-                                    return Promise.reject(new Error('Password must contain at least one special character!'));
-                                }
-                                return Promise.resolve();
-                            },
-                        },
-                    ]}
-                    hasFeedback
-                    style={{ width: '100%' }}
-                >
-                    <Input.Password style={{ width: '100%' }} />
-                </Form.Item>
+                <PasswordInput
+                    name={"password"}
+                    label={"Password"}
+                    value={""}
+                    onChange={""}
+                />
 
-                <Form.Item
-                    name="confirm"
-                    label="Confirm Password"
-                    dependencies={['password']}
-                    hasFeedback
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please confirm your password!',
-                        },
-                        ({ getFieldValue }) => ({
-                            validator(_, value) {
-                                if (!value || getFieldValue('password') === value) {
-                                    return Promise.resolve();
-                                }
-                                return Promise.reject(new Error('The passwords that you entered do not match!'));
-                            },
-                        }),
-                    ]}
-                    className="register-form-item"
-                    style={{ width: '100%' }}
-                >
-                    <Input.Password style={{ width: '100%' }} />
-                </Form.Item>
+                <ConfirmPassword />
 
                 <Form.Item {...tailFormItemLayout}>
                     <Button type="primary" htmlType="submit">
@@ -161,7 +100,7 @@ const RegisterForm = ({ onFinish }) => {
                     </Button>
                 </Form.Item>
             </Form>
-        </div>
+        </div >
     );
 };
 

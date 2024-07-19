@@ -27,6 +27,9 @@ function Navbar() {
                 <Link to={getRoutePath(ROUTES_ID.favorite)}>
                     Favorites
                 </Link>
+                <Link to={getRoutePath(ROUTES_ID.profile)}>
+                    Profile
+                </Link>
             </Space>
         </>
     )

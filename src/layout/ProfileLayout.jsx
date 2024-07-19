@@ -1,11 +1,10 @@
 import React from "react";
 import { Layout } from "antd";
 import { Helmet } from "react-helmet";
-import Sider from "antd/es/layout/Sider";
 
 const { Header, Footer, Content } = Layout;
 
-const PrivateLayout = ({ header, content, footer, title, sider }) => {
+const ProfileLayout = ({ header, content, footer, title }) => {
     return (
         <>
             <Helmet>
@@ -17,9 +16,6 @@ const PrivateLayout = ({ header, content, footer, title, sider }) => {
                     {header}
                 </Header>
                 <Layout>
-                    <Sider>
-                        {sider}
-                    </Sider>
                     <Content className="layout">
                         {content}
                     </Content>
@@ -32,4 +28,4 @@ const PrivateLayout = ({ header, content, footer, title, sider }) => {
     )
 };
 
-export default PrivateLayout;
+export default ProfileLayout

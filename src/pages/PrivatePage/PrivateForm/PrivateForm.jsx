@@ -1,12 +1,12 @@
-import React from 'react';
+// import React from 'react';
 
-const PraviteForm = () => {
+// const PraviteForm = () => {
 
-    return (
-        <div>
-            <button>Log out</button>
-        </div>
-    );
-};
+//     return (
+//         <div>
+//             <button>Log out</button>
+//         </div>
+//     );
+// };
 
-export default PraviteForm;
+// export default PraviteForm;

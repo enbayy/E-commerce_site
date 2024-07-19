@@ -15,7 +15,7 @@ function AppClientRouter() {
 
         <Suspense fallback={<div>Loading...</div>}>
             <ErrorBoundaryPage fallback={<div>Something Error</div>}>
-                <RouterProvider router={router} />
+                <RouterProvider router={router} fallbackElement={<p>Initial Load...</p>} />
             </ErrorBoundaryPage>
         </Suspense>
 
