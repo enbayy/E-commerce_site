@@ -4,9 +4,10 @@ import { routes } from './routing/routes';
 import { RouterProvider } from 'react-router-dom';
 import { Suspense } from 'react';
 import { ErrorBoundaryPage } from './pages/ErrorPage/ErrorPage';
+import routesControl from './utils/routesControl';
 
 const router = createBrowserRouter(
-    routes
+    routesControl(routes)
 );
 
 function AppClientRouter() {

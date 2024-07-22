@@ -1,166 +1,172 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Form, Input, InputNumber, Select } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { fetchUserAttributes, updateUserAttribute, deleteUserAttributes } from 'aws-amplify/auth';
 import './../Profile.css';
-import { fetchUserAttributes } from 'aws-amplify/auth';
-import { updateUserAttribute } from 'aws-amplify/auth';
+import { notification } from 'antd';
 
+const UserProfileForm = () => {
+    const [attributes, setAttributes] = useState({
+        email: '',
+        name: '',
+        age: '',
+        gender: '',
+        address: ''
+    });
 
-const { Option } = Select;
+    useEffect(() => {
+        const loadUserAttributes = async () => {
+            try {
+                const userAttributes = await fetchUserAttributes();
+                setAttributes({
+                    email: userAttributes.email || '',
+                    name: userAttributes.name || '',
+                    age: userAttributes.age || '',
+                    gender: userAttributes.gender || '',
+                    address: userAttributes.address || ''
+                });
+            } catch (error) {
+                console.log('Error fetching user attributes:', error);
+            }
+        };
 
-const layout = {
-    labelCol: {
-        span: 8,
-    },
-    wrapperCol: {
-        span: 16,
-    },
-};
+        loadUserAttributes();
+    }, []);
 
-const validateMessages = {
-    required: '${label} gereklidir!',
-    types: {
-        email: '${label} geçerli bir e-posta değil!',
-        number: '${label} geçerli bir sayı değil!',
-    },
-    number: {
-        range: '${label} ${min} ile ${max} arasında olmalıdır',
-    },
-};
+    const handleChange = (e) => {
+        setAttributes({
+            ...attributes,
+            [e.target.name]: e.target.value
+        });
+    };
 
-
-
-
-
-const ProfileForm = ({ attributes }) => {
-    const [form] = Form.useForm();
-    const [savedData, setSavedData] = useState(null);
-
-    async function handleUpdateUserAttribute(input) {
+    const handleUpdateUserAttribute = async (attributeKey, value) => {
         try {
             const output = await updateUserAttribute({
                 userAttribute: {
-                    input
+                    attributeKey,
+                    value
                 }
             });
-            console.log(output)
-            // handleUpdateUserAttributeNextSteps(output);
+            console.log(output);
         } catch (error) {
             console.log(error);
         }
-    }
+    };
 
-    const onFinish = (values) => {
-        const attributeInput = {
-            'custom:name': values.name,
-            'custom:gender': values.gender,
-            'custom:age': values.age,
-            'custom:address': values.address,
-        }
-        handleUpdateUserAttribute(attributeInput)
-        console.log(values)
-
-        const filteredValues = Object.fromEntries(
-            Object.entries(values).filter(([_, value]) => value !== undefined && value !== null && value !== "")
-        );
-
-        if (Object.keys(filteredValues).length > 0) {
-            setSavedData(filteredValues);
-        } else {
-            setSavedData(null);
+    const handleDeleteUserAttribute = async (attributeKey) => {
+        try {
+            const output = await deleteUserAttributes({
+                userAttributeKeys: [attributeKey]
+            });
+            console.log(output);
+        } catch (error) {
+            console.log(error);
         }
     };
 
-    const onGenderChange = (value, form) => {
-        switch (value) {
-            case 'male':
-                form.setFieldsValue({ not: 'Merhaba, beyefendi!' });
-                break;
-            case 'female':
-                form.setFieldsValue({ not: 'Merhaba, hanımefendi!' });
-                break;
-            case 'other':
-                form.setFieldsValue({ not: 'Merhaba!' });
-                break;
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            for (const [attributeKey, value] of Object.entries(attributes)) {
+                if (value) {
+                    await handleUpdateUserAttribute(attributeKey, value);
+                }
+            }
+            notification.success({
+                message: 'Update Successful',
+                description: 'User attributes updated successfully!',
+                placement: 'topRight',
+                duration: 3,
+            });
+        } catch (error) {
+            notification.error({
+                message: 'Error updating user attributes',
+                description: error.message,
+                placement: 'topRight',
+                duration: 3,
+            });
         }
     };
 
-    const onClear = () => {
-        form.resetFields();
-        setSavedData(null);
+    const handleClear = async () => {
+        try {
+            for (const attributeKey of Object.keys(attributes)) {
+                await handleDeleteUserAttribute(attributeKey);
+            }
+            setAttributes({
+                email: '',
+                name: '',
+                age: '',
+                gender: '',
+                address: ''
+            });
+            notification.success({
+                message: 'Cleaning Successful',
+                description: 'User attributes cleared successfully!',
+                placement: 'topRight',
+                duration: 3,
+            });
+        } catch (error) {
+            console.log('Error clearing user attributes:', error);
+        }
     };
 
-    console.log(attributes['custom:address'])
     return (
         <div className="profile-page-container">
-
-            <Button onClick={() => handleUpdateUserAttribute('custom:address', 'İzmir')}>Update</Button>
-            <Form
-                initialValues={{ name: attributes['custom:name'], age: attributes['custom:age'], gender: attributes['custom:gender'], address: attributes['custom:address'] }}
-                {...layout}
-                layout='vertical'
-                name="nest-messages"
-                onFinish={onFinish}
-                className="profile-form"
-                validateMessages={validateMessages}
-                form={form}
-            >
-                <Form.Item
-                    name="name"
-                    label="Name"
-                >
-                    <Input style={{ width: '100%' }} />
-                </Form.Item>
-
-                <Form.Item
-                    name="age"
-                    label="Age"
-                    rules={[
-                        {
-                            type: 'number',
-                            min: 0,
-                            max: 99,
-                        },
-                    ]}
-                >
-                    <InputNumber style={{ width: '30%' }} />
-                </Form.Item>
-
-                <Form.Item
-                    style={{ width: '40%' }}
-                    name="gender"
-                    label="Gender"
-                >
-                    <Select
-                        placeholder="Select a gender and change the greeting above"
-                        onChange={(value) => onGenderChange(value, form)}
-                        allowClear
-                    >
-                        <Option value="male">Male</Option>
-                        <Option value="female">Female</Option>
-                        <Option value="other">Other</Option>
-                    </Select>
-                </Form.Item>
-
-                <Form.Item name="address" label="Address">
-                    <Input.TextArea style={{ width: '100%' }} value={attributes['custom:address']} />
-                </Form.Item>
-
-                <Form.Item
-                    wrapperCol={{
-                        ...layout.wrapperCol,
-                        offset: 8,
-                    }}
-                >
-                    <Button type="primary" htmlType="submit">
-                        Save
-                    </Button>
-                    <Button type="default" onClick={onClear} style={{ marginLeft: '10px' }}>
-                        Clear
-                    </Button>
-                </Form.Item>
-            </Form>
+            <div className="saved-data-container">
+                <form className="profile-form" onSubmit={handleSubmit}>
+                    <h2>User Profile</h2>
+                    <div className="ant-form-item">
+                        <label>Email:</label>
+                        <input
+                            type="email"
+                            name="email"
+                            value={attributes.email}
+                            onChange={handleChange}
+                            disabled={true}
+                        />
+                    </div>
+                    <div className="ant-form-item">
+                        <label>Name:</label>
+                        <input
+                            type="text"
+                            name="name"
+                            value={attributes.name}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div className="ant-form-item">
+                        <label>Age:</label>
+                        <input
+                            type="number"
+                            name="age"
+                            value={attributes.age}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div className="ant-form-item">
+                        <label>Gender:</label>
+                        <input
+                            type="text"
+                            name="gender"
+                            value={attributes.gender}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div className="ant-form-item">
+                        <label>Address:</label>
+                        <input
+                            type="text"
+                            name="address"
+                            value={attributes.address}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <button type="submit">Update</button>
+                    <button type="button" onClick={handleClear}>Clear</button>
+                </form>
+            </div>
         </div>
     );
 };
 
-export default ProfileForm;
+export default UserProfileForm;

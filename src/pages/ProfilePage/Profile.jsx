@@ -11,18 +11,6 @@ function Profile() {
     const location = useLocation();
     const title = getRouteTitle(location.pathname);
 
-    useEffect(() => {
-        async function handleFetchUserAttributes() {
-            try {
-                const userAttributes = await fetchUserAttributes();
-                setAttributes(userAttributes)
-                console.log(userAttributes);
-            } catch (error) {
-                console.log(error);
-            }
-        }
-        handleFetchUserAttributes()
-    }, [])
     return (
         <ProfileLayout content={<ProfileForm attributes={attributes} />} header={<Navbar />} title={title} />
     );

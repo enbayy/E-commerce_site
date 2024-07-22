@@ -1,3 +1,4 @@
+/* Profile.css */
 html,
 body,
 #root {
@@ -39,6 +40,8 @@ body,
 }
 
 h2 {
+    display: flex;
+    justify-content: center;
     margin-bottom: 20px;
 }
 
@@ -48,4 +51,23 @@ h2 {
 
 .profile-form .ant-form-item label {
     font-weight: bold;
+    display: block; /* Label'ların inputların üstünde görünmesini sağlamak için */
+    margin-bottom: 0.5em; /* Input ile label arasına biraz boşluk ekleyin */
+}
+
+.profile-form div {
+    margin-bottom: 1em;
+    width: 100%;
+}
+
+.profile-form input {
+    width: 100%;
+    padding: 0.5em;
+    font-size: 1em;
+}
+
+.profile-form button {
+    padding: 0.5em 1em;
+    font-size: 1em;
+    margin: 0.5em 0;
 }

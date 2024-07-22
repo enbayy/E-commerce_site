@@ -20,6 +20,7 @@ export const routes = [
         element: <Home />,
         title: "Home",
         loader: CheckAuthLoader,
+        isPrivate: false,
     },
     {
         id: ROUTES_ID.contact,
@@ -78,6 +79,7 @@ export const routes = [
         element: <Profile />,
         title: "Profile",
         loader: CheckAuthLoader,
+        isPrivate: true,
     },
 ]
 

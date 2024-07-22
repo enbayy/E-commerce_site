@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, Button, notification } from 'antd';
+import { Form, Input, Button } from 'antd';
 import handleSignUp from '@/utils/SignUp';
 import { useNavigate } from 'react-router-dom';
 import { getRoutePath } from '@/routing/routes';
