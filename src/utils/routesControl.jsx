@@ -1,34 +1,22 @@
-import React from 'react'
+import RouteWithRedirections from '../routing/RouteWithRedirections';
 
 const routesControl = (routes) => {
-    console.log(routes)
-    return routes
+  return routes.map((route) => {
+
+    if (route.isPrivate) {
+      return {
+        ...route,
+        element: (
+          <RouteWithRedirections {...route}>
+            {route.element}
+          </RouteWithRedirections>
+        ),
+      };
+    }
+
+    return route;
+  });
 }
 
 export default routesControl
 
-// return routes.map((route) => {
-//     if (route.isPublic) {
-//       return {
-//         ...route,
-//         element: (
-//           <PublicRoute>
-//             {route.element}
-//           </PublicRoute>
-//         ),
-//       };
-//     }
-
-//     if (route.isPrivate) {
-//       return {
-//         ...route,
-//         element: (
-//           <PrivateRoute>
-//             {route.element}
-//           </PrivateRoute>
-//         ),
-//       };
-//     }
-
-//     return route;
-//   });

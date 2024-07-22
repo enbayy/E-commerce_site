@@ -1,6 +1,5 @@
 import { lazy } from "react";
 import { ROUTES_ID } from "./routes_id.js";
-import { CheckAuthLoader } from "../utils/CheckAuthLoader.jsx";
 
 const Contact = lazy(() => import("../pages/ContactPage/Contact.jsx"));
 const Home = lazy(() => import("../pages/HomePage/Home.jsx"));
@@ -19,8 +18,7 @@ export const routes = [
         path: "/",
         element: <Home />,
         title: "Home",
-        loader: CheckAuthLoader,
-        isPrivate: false,
+
     },
     {
         id: ROUTES_ID.contact,
@@ -33,14 +31,13 @@ export const routes = [
         path: "/category",
         element: <Category />,
         title: "Category",
-        loader: CheckAuthLoader,
     },
     {
         id: ROUTES_ID.login,
         path: "/login",
         element: <Login />,
         title: "Login",
-        loader: CheckAuthLoader,
+        isPrivate: true
     },
     {
         id: ROUTES_ID.skep,
@@ -65,20 +62,20 @@ export const routes = [
         path: "/register",
         element: <Register />,
         title: "Register",
-        loader: CheckAuthLoader,
+        isPrivate: true
     },
     {
         id: ROUTES_ID.forgotpassword,
         path: "/forgotpassword",
         element: <ForgotPassword />,
         title: "Forgot Password",
+        isPrivate: true
     },
     {
         id: ROUTES_ID.profile,
         path: "/profile",
         element: <Profile />,
         title: "Profile",
-        loader: CheckAuthLoader,
         isPrivate: true,
     },
 ]
