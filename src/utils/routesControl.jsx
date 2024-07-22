@@ -19,4 +19,3 @@ const routesControl = (routes) => {
 }
 
 export default routesControl
-

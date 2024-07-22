@@ -1,0 +1,9 @@
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 16px;
+}
+
+.navbar-container > .ant-space {
+    display: flex;
+}

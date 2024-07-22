@@ -1,8 +1,7 @@
 import React from 'react';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input } from 'antd';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { Button, Checkbox, Form, Input, notification } from 'antd';
+import { Link, useNavigate } from 'react-router-dom';
 import { getRoutePath } from '@/routing/routes';
 import { ROUTES_ID } from '@/routing/routes_id';
 import login from '@/utils/login';
@@ -10,24 +9,22 @@ import EmailInput from '../../../../components/EmailInput';
 import PasswordInput from '../../../../components/PasswordInput';
 
 const LoginForm = () => {
-
     const navigate = useNavigate();
 
     const handleFinish = async (values) => {
-        try {
-            await login({
-                email: values.email,
-                password: values.password
-            });
-            navigate(getRoutePath(ROUTES_ID.home))
-        } catch (error) {
-            console.error('Login failed:', error);
+        const success = await login({
+            email: values.email,
+            password: values.password
+        });
+
+        if (success) {
+            navigate(getRoutePath(ROUTES_ID.home));
         }
     };
 
     const handleGoLogin = () => {
-        navigate(getRoutePath(ROUTES_ID.forgotpassword))
-    }
+        navigate(getRoutePath(ROUTES_ID.forgotpassword));
+    };
 
     return (
         <div className="login-container">
@@ -60,7 +57,7 @@ const LoginForm = () => {
                     <Button type="primary" htmlType="submit" className="login-form-button">
                         Log in
                     </Button>
-                    Or <a href="/register">register now!</a>
+                    Or <Link to="/register">register now!</Link>
                 </Form.Item>
             </Form>
         </div>

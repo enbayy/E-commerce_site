@@ -1,26 +1,11 @@
-import { useEffect, useState } from "react";
-import { currentSession } from "../utils/CurrentSession";
-import { Navigate } from "react-router-dom";
-import { getRoutePath } from "./routes";
-import { ROUTES_ID } from "./routes_id";
+import React from 'react';
+import { Navigate } from 'react-router-dom';
+import { useAuth } from '../utils/AuthContext';
+import { getRoutePath } from './routes';
+import { ROUTES_ID } from './routes_id';
 
-/* eslint-disable react/prop-types */
 const RouteWithRedirections = (props) => {
-  // const [isAuthenticated,setIsAuthenticated] = useState();
-
-  // console.log('props',props)
-
-  // useEffect(() => {
-  //   const checkAuth = async () => {
-  //    await currentSession().then((res) => {
-  //       setIsAuthenticated(res.toString());
-  //     });
-
-  //   };
-  //   checkAuth()
-  // }, []);
-  console.log("props", props);
-  const isAuthenticated = true;
+  const { isAuthenticated } = useAuth();
 
   const isLoginSidePage = (path) => {
     const loginsidePages = [
@@ -28,19 +13,13 @@ const RouteWithRedirections = (props) => {
       ROUTES_ID.register,
       ROUTES_ID.forgotpassword,
     ];
-    console.log(path);
     const loginsidePaths = loginsidePages.map((id) => getRoutePath(id));
-
     return loginsidePaths.some((route) => route === path);
   };
 
   if (isAuthenticated) {
     if (isLoginSidePage(props.path)) {
-      return (
-        <>
-          <Navigate to={getRoutePath(ROUTES_ID.profile)} />
-        </>
-      );
+      return <Navigate to={getRoutePath(ROUTES_ID.profile)} />;
     } else {
       return <>{props.children}</>;
     }
@@ -48,11 +27,7 @@ const RouteWithRedirections = (props) => {
     if (isLoginSidePage(props.path)) {
       return <>{props.children}</>;
     } else {
-      return (
-        <>
-          <Navigate to={getRoutePath(ROUTES_ID.login)} />
-        </>
-      );
+      return <Navigate to={getRoutePath(ROUTES_ID.login)} />;
     }
   }
 };

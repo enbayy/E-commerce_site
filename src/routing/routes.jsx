@@ -11,6 +11,7 @@ const NotFound = lazy(() => import("../pages/NotFoundPage/NotFound.jsx"));
 const Register = lazy(() => import("../pages/RegisterPage/Register.jsx"));
 const ForgotPassword = lazy(() => import("../pages/ForgotPasswordPage/ForgotPassword.jsx"));
 const Profile = lazy(() => import("../pages/ProfilePage/Profile.jsx"));
+const Payment = lazy(() => import("../pages/PaymentPage/Payment.jsx"));
 
 export const routes = [
     {
@@ -37,7 +38,7 @@ export const routes = [
         path: "/login",
         element: <Login />,
         title: "Login",
-        isPrivate: true
+        isPrivate: true,
     },
     {
         id: ROUTES_ID.skep,
@@ -62,20 +63,27 @@ export const routes = [
         path: "/register",
         element: <Register />,
         title: "Register",
-        isPrivate: true
+        isPrivate: true,
     },
     {
         id: ROUTES_ID.forgotpassword,
         path: "/forgotpassword",
         element: <ForgotPassword />,
         title: "Forgot Password",
-        isPrivate: true
+        isPrivate: true,
     },
     {
         id: ROUTES_ID.profile,
         path: "/profile",
         element: <Profile />,
         title: "Profile",
+        isPrivate: true,
+    },
+    {
+        id: ROUTES_ID.payment,
+        path: "/payment",
+        element: <Payment />,
+        title: "Payment",
         isPrivate: true,
     },
 ]

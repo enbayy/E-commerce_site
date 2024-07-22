@@ -9,5 +9,6 @@ export const ROUTES_ID = {
     register: "register",
     forgotpassword: "forgotpassword",
     private: "private",
-    profile: "profile"
+    profile: "profile",
+    payment: "payment"
 }

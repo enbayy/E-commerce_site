@@ -32,7 +32,7 @@ const RegisterForm = ({ onFinish }) => {
 
     const handleFormSubmit = (values) => {
         handleSignUp({
-            username: values.username,
+            username: values.name,
             email: values.email,
             password: values.password
         });
@@ -77,16 +77,11 @@ const RegisterForm = ({ onFinish }) => {
                     <Input style={{ width: '100%' }} />
                 </Form.Item>
 
-                <EmailInput
-                    value={""}
-                    onChange={""}
-                />
+                <EmailInput />
 
                 <PasswordInput
                     name={"password"}
                     label={"Password"}
-                    value={""}
-                    onChange={""}
                 />
 
                 <ConfirmPassword />

@@ -2,10 +2,9 @@ import { notification } from 'antd';
 import { signIn } from 'aws-amplify/auth';
 
 async function login({ email, password }) {
-
   try {
-    const { isSignedIn } = await signIn({ username: email, password });
-    console.log("email:", email, "password:", password)
+    await signIn({ username: email, password });
+  
     notification.success({
       message: 'Logged in',
       description: '',
@@ -13,6 +12,7 @@ async function login({ email, password }) {
       duration: 3,
     });
 
+    return true;
   } catch (error) {
     console.log('error signing in', error);
     notification.error({
@@ -21,7 +21,9 @@ async function login({ email, password }) {
       placement: 'topRight',
       duration: 3,
     });
+
+    return false;
   }
 }
 
-export default login
+export default login;
