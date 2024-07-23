@@ -9,9 +9,8 @@ function PaymentSuccessfully() {
     };
 
     return (
-        <div>
-            <h2>Successfully Completed!</h2>
-            <p>Your payment has been made successfully.</p>
+        <div style={{ flexDirection: "column", display: "flex", alignItems: "center" }}>
+            <h3>Your payment has been made successfully.</h3>
             <Button onClick={handleGoHome}>
                 Go Home
             </Button>

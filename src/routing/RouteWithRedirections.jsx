@@ -1,11 +1,12 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../utils/AuthContext';
 import { getRoutePath } from './routes';
 import { ROUTES_ID } from './routes_id';
 
-const RouteWithRedirections = (props) => {
-  const { isAuthenticated } = useAuth();
+const RouteWithRedirections = ({ children, path }) => {
+  const { isAuthenticated, isLoading } = useAuth();
+  const location = useLocation();
 
   const isLoginSidePage = (path) => {
     const loginsidePages = [
@@ -17,15 +18,19 @@ const RouteWithRedirections = (props) => {
     return loginsidePaths.some((route) => route === path);
   };
 
+  if (isLoading) {
+    return <div>Loading...</div>; // Ya da bir yükleme spinnerı
+  }
+
   if (isAuthenticated) {
-    if (isLoginSidePage(props.path)) {
+    if (isLoginSidePage(location.pathname)) {
       return <Navigate to={getRoutePath(ROUTES_ID.profile)} />;
     } else {
-      return <>{props.children}</>;
+      return <>{children}</>;
     }
   } else {
-    if (isLoginSidePage(props.path)) {
-      return <>{props.children}</>;
+    if (isLoginSidePage(location.pathname)) {
+      return <>{children}</>;
     } else {
       return <Navigate to={getRoutePath(ROUTES_ID.login)} />;
     }
