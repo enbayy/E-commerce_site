@@ -2,9 +2,9 @@ import React from "react";
 import { Layout } from "antd";
 import { Helmet } from "react-helmet";
 
-const { Header, Footer, Content } = Layout;
+const { Header, Footer, Sider, Content } = Layout;
 
-const ProfileLayout = ({ header, content, footer, title }) => {
+const ProfileLayout = ({ header, content, footer, title, sider }) => {
     return (
         <>
             <Helmet>
@@ -16,16 +16,21 @@ const ProfileLayout = ({ header, content, footer, title }) => {
                     {header}
                 </Header>
                 <Layout>
-                    <Content className="layout">
-                        {content}
-                    </Content>
+                    <Sider width={200} className="site-layout-background">
+                        {sider}
+                    </Sider>
+                    <Layout style={{ padding: '0 24px', minHeight: 280 }}>
+                        <Content>
+                            {content}
+                        </Content>
+                    </Layout>
                 </Layout>
                 <Footer>
                     {footer}
                 </Footer>
             </Layout>
         </>
-    )
+    );
 };
 
-export default ProfileLayout
+export default ProfileLayout;

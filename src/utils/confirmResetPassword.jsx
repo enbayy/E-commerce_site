@@ -9,7 +9,8 @@ async function handleConfirmResetPassword({
     try {
         await confirmResetPassword({
             username: email,
-            confirmationCode, newPassword
+            confirmationCode, 
+            newPassword
         });
         notification.success({
             message: 'Password reset',

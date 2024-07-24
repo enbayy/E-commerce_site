@@ -7,7 +7,7 @@ async function login({ email, password }) {
   
     notification.success({
       message: 'Logged in',
-      description: '',
+      description: 'You have successfully logged in.',
       placement: 'topRight',
       duration: 3,
     });

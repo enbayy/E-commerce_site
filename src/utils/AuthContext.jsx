@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import { signOut } from 'aws-amplify/auth';
 import { currentSession } from '../utils/CurrentSession';
 
 const AuthContext = createContext();
@@ -9,15 +10,31 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const checkAuth = async () => {
-      const token = await currentSession();
-      setIsAuthenticated(!!token);
-      setIsLoading(false);
+      try {
+        const token = await currentSession();
+        setIsAuthenticated(!!token);
+      } catch (error) {
+        setIsAuthenticated(false);
+      } finally {
+        setIsLoading(false);
+      }
     };
     checkAuth();
   }, []);
 
+  const logout = async () => {
+    try {
+      await signOut();
+      setIsAuthenticated(false);
+      return true;
+    } catch (error) {
+      console.log('Error signing out:', error);
+      return false;
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ isAuthenticated, isLoading }}>
+    <AuthContext.Provider value={{ isAuthenticated, isLoading, logout }}>
       {children}
     </AuthContext.Provider>
   );

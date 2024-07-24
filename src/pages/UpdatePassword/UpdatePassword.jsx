@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import Navbar from '../../components/navbar';
 import { useLocation } from 'react-router-dom';
 import { getRouteTitle } from '../../routing/routes';
-import ProfileLayout from '../../layout/ProfileLayout';
-import ProfileForm from './ProfileForm/ProfileForm';
+import './UpdatePassword.css';
+import UpdatePasswordForm from './UpdatePasswordForm';
 import SiderForm from '../../components/sider';
+import ProfileLayout from '../../layout/ProfileLayout';
 import { fetchUserAttributes } from 'aws-amplify/auth';
 
-function Profile() {
+function UpdatePassword() {
     const [attributes, setAttributes] = useState({});
     const [userName, setUserName] = useState('');
     const location = useLocation();
@@ -29,7 +30,7 @@ function Profile() {
 
     return (
         <ProfileLayout
-            content={<ProfileForm attributes={attributes} />}
+            content={<UpdatePasswordForm />}
             header={<Navbar />}
             sider={<SiderForm userName={userName} />}
             title={title}
@@ -37,4 +38,4 @@ function Profile() {
     );
 }
 
-export default Profile;
+export default UpdatePassword;

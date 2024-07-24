@@ -1,24 +1,38 @@
 import React, { useState } from 'react';
-import { UserOutlined } from '@ant-design/icons';
+import { UserOutlined, KeyOutlined } from '@ant-design/icons';
 import { Layout, Menu, theme } from 'antd';
+import { useNavigate } from 'react-router-dom';
+import { getRoutePath } from '../routing/routes';
+import { ROUTES_ID } from '../routing/routes_id';
 
 const { Header, Sider } = Layout;
 
-const SiderForm = () => {
+const SiderForm = ({ userName }) => {
+    const navigate = useNavigate();
     const [collapsed, setCollapsed] = useState(false);
     const {
-        token: { colorBgContainer, borderRadiusLG },
+        token: { colorBgContainer },
     } = theme.useToken();
+
+    const handleUpdatePassword = () => {
+        navigate(getRoutePath(ROUTES_ID.updatepassword));
+    };
+
+    const handleProfileClick = () => {
+        navigate(getRoutePath(ROUTES_ID.profile));
+    };
 
     const items = [
         {
             key: 'sub1',
             icon: <UserOutlined />,
-            label: 'User',
+            label: <span onClick={handleProfileClick} style={{ cursor: 'pointer' }}>{userName}</span>,
             children: [
-                { key: '3', label: 'Tom' },
-                { key: '4', label: 'Bill' },
-                { key: '5', label: 'Alex' },
+                {
+                    key: '1',
+                    label: 'Change Password',
+                    onClick: handleUpdatePassword,
+                }
             ],
         },
     ];
@@ -27,7 +41,7 @@ const SiderForm = () => {
         <Layout style={{ minHeight: '100vh' }}>
             <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
                 <div className="demo-logo-vertical" />
-                <Menu theme="dark" defaultSelectedKeys={['3']} mode="inline" items={items} />
+                <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
             </Sider>
             <Layout>
                 <Header
@@ -36,7 +50,6 @@ const SiderForm = () => {
                         background: colorBgContainer,
                     }}
                 />
-
             </Layout>
         </Layout>
     );

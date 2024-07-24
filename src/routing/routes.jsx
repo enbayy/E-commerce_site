@@ -1,5 +1,6 @@
 import { lazy } from "react";
 import { ROUTES_ID } from "./routes_id.js";
+import UpdatePassword from "../pages/UpdatePassword/UpdatePassword.jsx";
 
 const Contact = lazy(() => import("../pages/ContactPage/Contact.jsx"));
 const Home = lazy(() => import("../pages/HomePage/Home.jsx"));
@@ -94,6 +95,12 @@ export const routes = [
         element: <Payment />,
         title: "Payment",
         isPrivate: true,
+    },
+    {
+        id: ROUTES_ID.updatepassword,
+        path: "/updatepassword",
+        element: <UpdatePassword />,
+        title: "Update Password",
     },
 ]
 
