@@ -12,12 +12,12 @@ function Navbar() {
                 <Link to={getRoutePath(ROUTES_ID.home)}>Home</Link>
                 <Link to={getRoutePath(ROUTES_ID.contact)}>Contact</Link>
                 <Link to={getRoutePath(ROUTES_ID.category)}>Categories</Link>
-                <Link to={getRoutePath(ROUTES_ID.skep)}>Skep</Link>
                 <Link to={getRoutePath(ROUTES_ID.favorite)}>Favorites</Link>
                 <Link to={getRoutePath(ROUTES_ID.profile)}>Profile</Link>
                 <Link to={getRoutePath(ROUTES_ID.payment)}>Payment</Link>
             </Space>
             <Space>
+                <Link to={getRoutePath(ROUTES_ID.skep)}>Skep</Link>
                 <Link to={getRoutePath(ROUTES_ID.login)}>Login</Link>
                 <Link to={getRoutePath(ROUTES_ID.login)}>Logout</Link>
             </Space>

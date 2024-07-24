@@ -10,5 +10,6 @@ export const ROUTES_ID = {
     forgotpassword: "forgotpassword",
     private: "private",
     profile: "profile",
-    payment: "payment"
+    payment: "payment",
+    detail: "detail",
 }

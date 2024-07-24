@@ -1,30 +1,58 @@
 import React from 'react';
 import { MdFavoriteBorder } from "react-icons/md";
 import { FaShoppingBasket } from "react-icons/fa";
-import { Button, Card } from 'antd';
+import { Button, Card, notification } from 'antd';
 import Meta from 'antd/es/card/Meta';
-import '../pages/HomePage/Home.css';
+import './Cart.css';
+import { useCart } from '../utils/CartContext';
+import { useNavigate } from 'react-router-dom';
+import { getRoutePath } from '../routing/routes';
+import { ROUTES_ID } from '../routing/routes_id';
 
-function Cart() {
+function Cart({ id, imageSrc, title, description, price }) {
+    const navigate = useNavigate();
+    const { addToCart } = useCart();
+
+    const handleAddToCart = () => {
+        const item = { id, imageSrc, title, description, price };
+        addToCart(item);
+        notification.success({
+            message: 'Added to cart',
+            description: '',
+            placement: 'topRight',
+            duration: 3,
+        });
+    };
+
+    const handleNavigateCart = () => {
+        console.log(getRoutePath(ROUTES_ID.detail), { id: id })
+        navigate(getRoutePath(ROUTES_ID.detail), { id: id })
+    }
+
     return (
-        <div className="page-container">
-            <div className="card-container">
-                <Card
-                    hoverable
-                    style={{ width: '100%' }}
-                    cover={<img alt="example" src="src/assets/tshirt.png" />}
-                >
-                    <div className="card-content">
-                        <Meta title="Europe Street beat" description="50$" />
-                        <div className='button-container'>
-                            <Button>Favorite<MdFavoriteBorder /></Button>
-                            <Button><FaShoppingBasket /></Button>
-                        </div>
-                    </div>
-                </Card>
+
+        <Card
+            hoverable
+            style={{ width: '100%' }}
+            cover={<img alt={title} src={imageSrc} />}
+            onClick={handleNavigateCart}
+            className="card-container"
+        >
+            <div className="card-content">
+                <Meta title={title} description={description} />
+                <p className="price">Price: {price} TL</p>
+                <div className='button-container'>
+                    <Button className='favorite-button'>
+                        Favorite <MdFavoriteBorder />
+                    </Button>
+                    <Button className='basket-button' onClick={handleAddToCart}>
+                        <FaShoppingBasket />
+                    </Button>
+                </div>
             </div>
-        </div>
-    )
+        </Card>
+
+    );
 }
 
-export default Cart
+export default Cart;

@@ -12,6 +12,7 @@ const Register = lazy(() => import("../pages/RegisterPage/Register.jsx"));
 const ForgotPassword = lazy(() => import("../pages/ForgotPasswordPage/ForgotPassword.jsx"));
 const Profile = lazy(() => import("../pages/ProfilePage/Profile.jsx"));
 const Payment = lazy(() => import("../pages/PaymentPage/Payment.jsx"));
+const DetailPage = lazy(() => import("../pages/HomePage/DetailPage/DetailPage.jsx"));
 
 export const routes = [
     {
@@ -19,7 +20,15 @@ export const routes = [
         path: "/",
         element: <Home />,
         title: "Home",
-
+        children:
+            [
+                {
+                    id: ROUTES_ID.detail,
+                    path: ":id",
+                    element: <DetailPage />,
+                    title: "Detail Page",
+                }
+            ]
     },
     {
         id: ROUTES_ID.contact,

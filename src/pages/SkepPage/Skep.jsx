@@ -1,22 +1,17 @@
-import React from 'react';
-import MainLayout from '../../layout/MainLayoutPage/MainLayout';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../../components/navbar';
 import { useLocation } from 'react-router-dom';
 import { getRouteTitle } from '../../routing/routes';
-
-const SkepContainer = () => {
-    return (
-        <div>
-            Skep
-        </div>
-    )
-}
+import SkepForm from './SkepForm';
+import MainLayout from '../../layout/MainLayoutPage/MainLayout';
 
 function Skep() {
+    const [attributes, setAttributes] = useState({});
     const location = useLocation();
     const title = getRouteTitle(location.pathname);
+
     return (
-        <MainLayout content={<SkepContainer />} header={<Navbar />} title={title} />
+        <MainLayout content={<SkepForm attributes={attributes} />} header={<Navbar />} title={title} />
     );
 }
 

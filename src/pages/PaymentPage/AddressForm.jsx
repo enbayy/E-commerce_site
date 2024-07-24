@@ -9,20 +9,21 @@ function AddressForm({ onFinish, initialValues }) {
             initialValues={initialValues}
         >
             <Form.Item
+                label="Phone Number"
+                name="phone"
+                rules={[{ required: true, message: 'Please enter your phone number!' }]}
+                style={{ marginTop: "7%" }}
+            >
+                <Input style={{width:"30%"}} />
+            </Form.Item>
+            <Form.Item
                 label="Address"
                 name="address"
                 rules={[{ required: true, message: 'Please enter your address!' }]}
             >
-                <Input />
+                <Input.TextArea rows={5} />
             </Form.Item>
-            <Form.Item
-                label="Phone Number"
-                name="phone"
-                rules={[{ required: true, message: 'Please enter your phone number!' }]}
-            >
-                <Input />
-            </Form.Item>
-            <Form.Item>
+            <Form.Item style={{ display: "flex", justifyContent: "end" }}>
                 <Button type="primary" htmlType="submit">
                     Continue
                 </Button>

@@ -1,0 +1,32 @@
+.card-container {
+    background-color: #f9f9f9;
+    padding: 0px;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.card-content {
+    padding: 16px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+
+.favorite-button {
+    background-color: #ffcccc;
+    border-color: #ffcccc;
+}
+
+.basket-button {
+    background-color: #cce5ff;
+    border-color: #cce5ff;
+}
+
+.card-container img {
+    border-radius: 4px;
+}

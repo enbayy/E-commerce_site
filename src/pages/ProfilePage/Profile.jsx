@@ -4,7 +4,6 @@ import { useLocation } from 'react-router-dom';
 import { getRouteTitle } from '../../routing/routes';
 import ProfileLayout from '../../layout/ProfileLayout';
 import ProfileForm from './ProfileForm/ProfileForm';
-import { fetchUserAttributes } from 'aws-amplify/auth';
 
 function Profile() {
     const [attributes, setAttributes] = useState({});

@@ -19,7 +19,7 @@ const RouteWithRedirections = ({ children, path }) => {
   };
 
   if (isLoading) {
-    return <div>Loading...</div>; // Ya da bir yükleme spinnerı
+    return <div>Loading...</div>;
   }
 
   if (isAuthenticated) {

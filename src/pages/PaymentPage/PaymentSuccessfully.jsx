@@ -1,6 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'antd';
+import "./PaymentStepper.css";
+import { CheckCircleOutlined } from '@ant-design/icons';
 
 function PaymentSuccessfully() {
     const navigate = useNavigate();
@@ -9,7 +11,8 @@ function PaymentSuccessfully() {
     };
 
     return (
-        <div style={{ flexDirection: "column", display: "flex", alignItems: "center" }}>
+        <div className='payment-successfully'>
+            <CheckCircleOutlined style={{fontSize:"50px"}}/>
             <h3>Your payment has been made successfully.</h3>
             <Button onClick={handleGoHome}>
                 Go Home
