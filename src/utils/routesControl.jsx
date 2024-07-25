@@ -12,6 +12,12 @@ const routesControl = (routes) => {
         ),
       };
     }
+    if (route.children) {
+      return {
+        ...route,
+        children: routesControl(route.children),
+      };
+    }
     return route;
   });
 };

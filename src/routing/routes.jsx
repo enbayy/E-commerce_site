@@ -1,6 +1,7 @@
 import { lazy } from "react";
 import { ROUTES_ID } from "./routes_id.js";
 import UpdatePassword from "../pages/UpdatePassword/UpdatePassword.jsx";
+import DetailPage from "../pages/HomePage/DetailPage/DetailPage.jsx";
 
 const Contact = lazy(() => import("../pages/ContactPage/Contact.jsx"));
 const Home = lazy(() => import("../pages/HomePage/Home.jsx"));
@@ -13,27 +14,27 @@ const Register = lazy(() => import("../pages/RegisterPage/Register.jsx"));
 const ForgotPassword = lazy(() => import("../pages/ForgotPasswordPage/ForgotPassword.jsx"));
 const Profile = lazy(() => import("../pages/ProfilePage/Profile.jsx"));
 const Payment = lazy(() => import("../pages/PaymentPage/Payment.jsx"));
-const DetailPage = lazy(() => import("../pages/HomePage/DetailPage/DetailPage.jsx"));
+
 
 export const routes = [
     {
         id: ROUTES_ID.home,
-        path: "/",
+        path: "/list",
         element: <Home />,
         title: "Home",
-        children:
-            [
-                {
-                    id: ROUTES_ID.detail,
-                    path: ":id",
-                    element: <DetailPage />,
-                    title: "Detail Page",
-                }
-            ]
+        children: [
+            {
+                id: ROUTES_ID.detail,
+                path: "detail/:id",
+                element: <DetailPage />,
+                title: "Detail Page",
+            },
+        ]
+
     },
     {
         id: ROUTES_ID.contact,
-        path: "/contact",
+        path: "/",
         element: <Contact />,
         title: "Contact",
     },
@@ -42,6 +43,7 @@ export const routes = [
         path: "/category",
         element: <Category />,
         title: "Category",
+
     },
     {
         id: ROUTES_ID.login,

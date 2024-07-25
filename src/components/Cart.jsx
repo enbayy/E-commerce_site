@@ -24,9 +24,13 @@ function Cart({ id, imageSrc, title, description, price }) {
         });
     };
 
+
+
     const handleNavigateCart = () => {
-        console.log(getRoutePath(ROUTES_ID.detail), { id: id })
-        navigate(`/${id}`)
+        const detailPagePath = getRoutePath(ROUTES_ID.home)
+        console.log(`${detailPagePath}/${id}`)
+        navigate(`${detailPagePath}/detail/${id}`)
+        console.log(getRoutePath(ROUTES_ID.detail))
     }
 
     return (

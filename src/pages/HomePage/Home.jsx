@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import MainLayout from '../../layout/MainLayoutPage/MainLayout';
 import Navbar from '../../components/navbar';
-import { useLocation } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { getRouteTitle } from '../../routing/routes';
 import HomeForm from './pageComponents/HomeForm/HomeForm';
 
@@ -10,7 +10,7 @@ function Home() {
   const title = getRouteTitle(location.pathname);
 
   return (
-    <MainLayout content={<HomeForm />} header={<Navbar />} title={title} />
+    <><MainLayout content={<HomeForm />} header={<Navbar />} title={title} /></>
   );
 }
 
