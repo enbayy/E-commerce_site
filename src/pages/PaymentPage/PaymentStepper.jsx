@@ -12,6 +12,17 @@ function PaymentStepper() {
     const [current, setCurrent] = useState(0);
     const [addressDetails, setAddressDetails] = useState(null);
     const [paymentInfo, setPaymentInfo] = useState(null);
+    const [userInfo, setUserInfo] = useState({
+        address: "",
+        phoneNumber: "",
+        firstname: "",
+        lastname: "",
+        email: "",
+        cardNumber: "",
+        expirationDate: "",
+        cvv: ""
+    });
+    console.log(userInfo)
 
     const onFinishAddressForm = (values) => {
         setAddressDetails(values);
@@ -19,13 +30,12 @@ function PaymentStepper() {
     };
 
     const onFinishPaymentForm = (values) => {
-        console.log('Ödeme Bilgileri:', values);
         setCurrent(2);
     };
 
     const forms = [
-        <AddressForm onFinish={onFinishAddressForm} initialValues={addressDetails} />,
-        <PaymentInfo onFinish={onFinishPaymentForm} />,
+        <AddressForm onFinish={onFinishAddressForm} initialValues={addressDetails} setUserInfo={setUserInfo} userInfo={userInfo} />,
+        <PaymentInfo onFinish={onFinishPaymentForm} setUserInfo={setUserInfo} userInfo={userInfo} />,
         <PaymentSuccessfully />
     ];
 
@@ -52,12 +62,13 @@ function PaymentStepper() {
                     </div>
                     <div className="payment-stepper-form">
                         {forms[current]}
+                        <ProductDetails />
                     </div>
                 </div>
 
-                <div className="payment-stepper-sidebar">
-                    <ProductDetails />
-                </div>
+                {/* <div className="payment-stepper-sidebar">
+
+                </div> */}
             </div>
         </div>
     );

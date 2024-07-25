@@ -17,6 +17,7 @@ function HomeForm() {
             {products.map((e) => (
                 <Col key={e.id} span={8}>
                     <Cart
+                        id={e.id}
                         title={e.name}
                         description={e.description}
                         imageSrc={e.image}

@@ -35,7 +35,7 @@ const ProductDetails = ({ onFinish, initialValues }) => {
                     </List.Item>
                 )}
             />
-            <h2 style={{ display: "flex", justifyContent: "center" }}>Total Price: {totalPrice} TL</h2>
+            <h3 style={{ display: "flex", justifyContent: "center" }}>Total Price: {totalPrice} TL</h3>
         </div>
     );
 }
