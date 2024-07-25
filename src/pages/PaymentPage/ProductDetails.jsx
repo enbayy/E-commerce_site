@@ -15,26 +15,26 @@ const ProductDetails = ({ onFinish, initialValues }) => {
 
     const handleNext = () => {
         onFinish(initialValues);
-
     };
 
     return (
-        <div>
+        <div className="product-details-container">
             <h2 style={{ display: "flex", justifyContent: "center" }}>Product Details</h2>
-            <List
-                itemLayout="horizontal"
-                dataSource={cartItems}
-                renderItem={(item) => (
-                    <List.Item>
-                        <List.Item.Meta
-                            avatar={<img alt={item.title} src={item.imageSrc} style={{ width: 50 }} />}
-                            title={item.title}
-                            description={item.description}
-                        />
-                        <div>Price: {item.price} TL</div>
-                    </List.Item>
-                )}
-            />
+            <div className="product-list-container">
+                <List
+                    itemLayout="vertical"
+                    dataSource={cartItems}
+                    renderItem={(item) => (
+                        <List.Item>
+                            <List.Item.Meta
+                                avatar={<img alt={item.title} src={item.imageSrc} style={{ width: 50 }} />}
+                                title={item.title}
+                            />
+                            <div>Price: {item.price} TL</div>
+                        </List.Item>
+                    )}
+                />
+            </div>
             <h3 style={{ display: "flex", justifyContent: "center" }}>Total Price: {totalPrice} TL</h3>
         </div>
     );

@@ -27,10 +27,7 @@ function Cart({ id, imageSrc, title, description, price }) {
 
 
     const handleNavigateCart = () => {
-        const detailPagePath = getRoutePath(ROUTES_ID.home)
-        console.log(`${detailPagePath}/${id}`)
-        navigate(`${detailPagePath}/detail/${id}`)
-        console.log(getRoutePath(ROUTES_ID.detail))
+        navigate(`detail/${id}`)
     }
 
     return (

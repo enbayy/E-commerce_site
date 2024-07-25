@@ -10,7 +10,7 @@ function Home() {
   const title = getRouteTitle(location.pathname);
 
   return (
-    <><MainLayout content={<HomeForm />} header={<Navbar />} title={title} /></>
+    <><MainLayout content={<Outlet />} header={<Navbar />} title={title} /></>
   );
 }
 

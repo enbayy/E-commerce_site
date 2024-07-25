@@ -28,7 +28,7 @@ function HomeForm() {
                     </Col>
                 ))}
             </Row>
-            <Outlet />
+
         </>
     );
 }

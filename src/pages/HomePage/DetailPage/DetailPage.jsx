@@ -1,16 +1,27 @@
 import React from 'react'
 import MainLayout from '../../../layout/MainLayoutPage/MainLayout'
 import Navbar from '../../../components/navbar'
+import { Link, Outlet, useParams } from 'react-router-dom'
 
-const DetailPageContainer = () => {
+export const DetailPageContainer = () => {
   return (
-    <div>DetailPage</div>
+    <div>DetailPageContainer</div>
   )
 }
-const DetailPage = () => {
+export const DetailPage = () => {
+  const params = useParams();
   return (
-    <MainLayout content={DetailPageContainer} header={<Navbar />} title={'Detail page'} />
-
+    <div>
+      <div><Link to={``}>Container</Link></div>
+      <div><Link to={"/info"}>Info</Link></div>
+      <Outlet />
+    </div>
   )
 }
-export default DetailPage
+
+export const DetailPageInfo = () => {
+  return (
+    <div>DetailPageInfo</div>
+  )
+}
+

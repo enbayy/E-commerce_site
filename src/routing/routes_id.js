@@ -12,5 +12,6 @@ export const ROUTES_ID = {
     profile: "profile",
     payment: "payment",
     detail: "detail",
-    updatepassword: "updatepassword"
+    updatepassword: "updatepassword",
+    homeForm: "homeForm"
 }

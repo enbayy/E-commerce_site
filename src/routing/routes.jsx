@@ -1,7 +1,8 @@
 import { lazy } from "react";
 import { ROUTES_ID } from "./routes_id.js";
 import UpdatePassword from "../pages/UpdatePassword/UpdatePassword.jsx";
-import DetailPage from "../pages/HomePage/DetailPage/DetailPage.jsx";
+import { DetailPage, DetailPageContainer, DetailPageInfo } from "../pages/HomePage/DetailPage/DetailPage.jsx";
+import HomeForm from "../pages/HomePage/pageComponents/HomeForm/HomeForm.jsx";
 
 const Contact = lazy(() => import("../pages/ContactPage/Contact.jsx"));
 const Home = lazy(() => import("../pages/HomePage/Home.jsx"));
@@ -19,9 +20,10 @@ const Payment = lazy(() => import("../pages/PaymentPage/Payment.jsx"));
 export const routes = [
     {
         id: ROUTES_ID.home,
-        path: "/list",
+        path: "/",
         element: <Home />,
         title: "Home",
+
         children: [
             {
                 id: ROUTES_ID.detail,
@@ -29,12 +31,18 @@ export const routes = [
                 element: <DetailPage />,
                 title: "Detail Page",
             },
+            {
+                id: ROUTES_ID.homeForm,
+                index: true,
+                element: <HomeForm />,
+                title: "Home",
+            }
         ]
 
     },
     {
         id: ROUTES_ID.contact,
-        path: "/",
+        path: "/contact",
         element: <Contact />,
         title: "Contact",
     },
@@ -103,6 +111,7 @@ export const routes = [
         path: "/updatepassword",
         element: <UpdatePassword />,
         title: "Update Password",
+        isPrivate: true,
     },
 ]
 

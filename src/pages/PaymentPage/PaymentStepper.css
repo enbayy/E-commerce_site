@@ -32,8 +32,8 @@
 
 .payment-stepper-form {
     display: flex;
+    justify-content: space-between;
     background: #fff;
-    padding: 24px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     margin-top: 20px;
@@ -60,4 +60,46 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+}
+
+.product-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    padding: 0px;
+    max-height: 450px;
+
+}
+
+.product-list-container {
+    width: 100%;
+    min-width: 250px;
+    max-height: 450px;
+    overflow-y: auto;
+    background: #fff;
+    padding: 5px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+}
+
+.address-form {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.address-form .ant-form-item {
+    margin-bottom: 20px;
+}
+
+.address-form .ant-input,
+.address-form .ant-input-textarea {
+    width: 100%;
 }

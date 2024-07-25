@@ -20,7 +20,8 @@ function PaymentStepper() {
         email: "",
         cardNumber: "",
         expirationDate: "",
-        cvv: ""
+        cvv: "",
+        cardOwner: "cardOwner"
     });
     console.log(userInfo)
 
@@ -30,6 +31,7 @@ function PaymentStepper() {
     };
 
     const onFinishPaymentForm = (values) => {
+        setPaymentInfo(values);
         setCurrent(2);
     };
 
@@ -65,10 +67,6 @@ function PaymentStepper() {
                         <ProductDetails />
                     </div>
                 </div>
-
-                {/* <div className="payment-stepper-sidebar">
-
-                </div> */}
             </div>
         </div>
     );
