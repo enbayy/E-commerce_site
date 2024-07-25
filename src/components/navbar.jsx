@@ -6,6 +6,9 @@ import { ROUTES_ID } from '../routing/routes_id';
 import "./Navbar.css";
 import { RxAvatar } from "react-icons/rx";
 import { useAuth } from '../utils/AuthContext';
+import { FaShoppingBasket } from "react-icons/fa";
+import { IoLogOut } from "react-icons/io5";
+import { IoLogIn } from "react-icons/io5";
 
 function Navbar() {
     const { isAuthenticated, logout } = useAuth();
@@ -32,20 +35,26 @@ function Navbar() {
     return (
         <div className="navbar-container">
             <Space>
-                <Link to={getRoutePath(ROUTES_ID.home)}>Home</Link>
-                <Link to={getRoutePath(ROUTES_ID.contact)}>Contact</Link>
-                <Link to={getRoutePath(ROUTES_ID.category)}>Categories</Link>
-                <Link to={getRoutePath(ROUTES_ID.favorite)}>Favorites</Link>
-                <Link to={getRoutePath(ROUTES_ID.payment)}>Payment</Link>
+                <Link to={getRoutePath(ROUTES_ID.home)} style={{ fontSize: "15px", display: "flex", alignItems: "center" }}>Home</Link>
+                <Link to={getRoutePath(ROUTES_ID.contact)} style={{ fontSize: "15px", display: "flex", alignItems: "center" }}>Contact</Link>
+                <Link to={getRoutePath(ROUTES_ID.category)} style={{ fontSize: "15px", display: "flex", alignItems: "center" }}>Categories</Link>
+                <Link to={getRoutePath(ROUTES_ID.favorite)} style={{ fontSize: "15px", display: "flex", alignItems: "center" }} >Favorites</Link>
+                <Link to={getRoutePath(ROUTES_ID.payment)} style={{ fontSize: "15px", display: "flex", alignItems: "center" }} >Payment</Link>
             </Space>
             <Space>
-                <Link to={getRoutePath(ROUTES_ID.skep)}>Skep</Link>
-                <Link to={getRoutePath(ROUTES_ID.profile)}><RxAvatar style={{ fontSize: "40px", display: "flex", alignItems: "center" }} /></Link>
+                <Link to={getRoutePath(ROUTES_ID.skep)}><FaShoppingBasket style={{ fontSize: "30px", display: "flex", alignItems: "center" }} /></Link>
+                {isAuthenticated && (
+                    <>
+                        <Link to={getRoutePath(ROUTES_ID.profile)}>
+                            <RxAvatar style={{ fontSize: "30px", display: "flex", alignItems: "center" }} />
+                        </Link>
+                    </>
+                )}
                 {!isAuthenticated && (
-                    <Link to={getRoutePath(ROUTES_ID.login)}>Login</Link>
+                    <Link to={getRoutePath(ROUTES_ID.login)}><IoLogIn style={{ fontSize: "30px", display: "flex", alignItems: "center" }} /></Link>
                 )}
                 {isAuthenticated && (
-                    <Link onClick={handleLogout}>Logout</Link>
+                    <Link onClick={handleLogout}><IoLogOut style={{ fontSize: "30px", display: "flex", alignItems: "center" }} /></Link>
                 )}
             </Space>
         </div>
