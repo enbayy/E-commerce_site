@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Cart from '../../../../components/Cart';
 import { axiosInstance } from '../../../../network/axiosInstance';
 import { Col, Row } from 'antd';
-import { Outlet } from 'react-router-dom';
 
 function HomeForm() {
     const [products, setProducts] = useState([]);
@@ -14,10 +13,10 @@ function HomeForm() {
     }, []);
 
     return (
-        <>
+        <div className="page-container">
             <Row gutter={16}>
                 {products.map((e) => (
-                    <Col key={e.id} span={8}>
+                    <Col key={e.id} xs={24} sm={12} md={8} lg={6}>
                         <Cart
                             id={e.id}
                             title={e.name}
@@ -28,8 +27,7 @@ function HomeForm() {
                     </Col>
                 ))}
             </Row>
-
-        </>
+        </div>
     );
 }
 

@@ -8,7 +8,7 @@ import { RxAvatar } from "react-icons/rx";
 import { useAuth } from '../utils/AuthContext';
 import { FaShoppingBasket } from "react-icons/fa";
 import { IoLogOut } from "react-icons/io5";
-import { IoLogIn } from "react-icons/io5";
+import { HiLogin } from "react-icons/hi";
 
 function Navbar() {
     const { isAuthenticated, logout } = useAuth();
@@ -51,7 +51,7 @@ function Navbar() {
                     </>
                 )}
                 {!isAuthenticated && (
-                    <Link to={getRoutePath(ROUTES_ID.login)}><IoLogIn style={{ fontSize: "30px", display: "flex", alignItems: "center" }} /></Link>
+                    <Link to={getRoutePath(ROUTES_ID.login)}><HiLogin style={{ fontSize: "30px", display: "flex", alignItems: "center" }} /></Link>
                 )}
                 {isAuthenticated && (
                     <Link onClick={handleLogout}><IoLogOut style={{ fontSize: "30px", display: "flex", alignItems: "center" }} /></Link>

@@ -34,12 +34,12 @@ const SkepForm = () => {
 
     return (
         <div className="skep-container">
-            <h2 style={{display:"flex",justifyContent:"center"}}>My Cart</h2>
+            <h2 style={{ display: "flex", justifyContent: "center" }}>My Cart</h2>
             {cartItems.length > 0 ? (
                 <>
                     <Row gutter={16}>
                         {cartItems.map((item, index) => (
-                            <Col key={index} span={8} className="card-col">
+                            <Col key={index} xs={24} sm={12} md={8} lg={6} className="card-col">
                                 <Card
                                     hoverable
                                     cover={<img alt={item.title} src={item.imageSrc} />}

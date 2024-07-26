@@ -6,8 +6,6 @@ import Meta from 'antd/es/card/Meta';
 import './Cart.css';
 import { useCart } from '../utils/CartContext';
 import { useNavigate } from 'react-router-dom';
-import { getRoutePath } from '../routing/routes';
-import { ROUTES_ID } from '../routing/routes_id';
 
 function Cart({ id, imageSrc, title, description, price }) {
     const navigate = useNavigate();
@@ -24,8 +22,6 @@ function Cart({ id, imageSrc, title, description, price }) {
         });
     };
 
-
-
     const handleNavigateCart = () => {
         navigate(`detail/${id}`)
     }
@@ -36,7 +32,7 @@ function Cart({ id, imageSrc, title, description, price }) {
             hoverable
             style={{ width: '100%' }}
             cover={<img alt={title} src={imageSrc} />}
-            onClick={handleNavigateCart}
+
             className="card-container"
         >
             <div className="card-content">
@@ -48,6 +44,9 @@ function Cart({ id, imageSrc, title, description, price }) {
                     </Button>
                     <Button className='basket-button' onClick={handleAddToCart}>
                         <FaShoppingBasket />
+                    </Button>
+                    <Button className='basket-button' onClick={handleNavigateCart}>
+                        Review
                     </Button>
                 </div>
             </div>

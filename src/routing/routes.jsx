@@ -1,7 +1,5 @@
 import { lazy } from "react";
 import { ROUTES_ID } from "./routes_id.js";
-import UpdatePassword from "../pages/UpdatePassword/UpdatePassword.jsx";
-import { DetailPage, DetailPageContainer, DetailPageInfo } from "../pages/HomePage/DetailPage/DetailPage.jsx";
 import HomeForm from "../pages/HomePage/pageComponents/HomeForm/HomeForm.jsx";
 
 const Contact = lazy(() => import("../pages/ContactPage/Contact.jsx"));
@@ -15,7 +13,9 @@ const Register = lazy(() => import("../pages/RegisterPage/Register.jsx"));
 const ForgotPassword = lazy(() => import("../pages/ForgotPasswordPage/ForgotPassword.jsx"));
 const Profile = lazy(() => import("../pages/ProfilePage/Profile.jsx"));
 const Payment = lazy(() => import("../pages/PaymentPage/Payment.jsx"));
-
+const UpdatePassword = lazy(() => import("../pages/UpdatePassword/UpdatePassword.jsx"));
+const DetailPage = lazy(() => import("../pages/HomePage/DetailPage/DetailPage.jsx"));
+const MyOrders = lazy(() => import("../pages/myOrdersPage/myOrders.jsx"));
 
 export const routes = [
     {
@@ -111,6 +111,13 @@ export const routes = [
         path: "/updatepassword",
         element: <UpdatePassword />,
         title: "Update Password",
+        isPrivate: true,
+    },
+    {
+        id: ROUTES_ID.myOrders,
+        path: "/myOrders",
+        element: <MyOrders />,
+        title: "My orders",
         isPrivate: true,
     },
 ]

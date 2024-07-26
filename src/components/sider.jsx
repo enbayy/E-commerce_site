@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { UserOutlined, KeyOutlined } from '@ant-design/icons';
+import { UserOutlined } from '@ant-design/icons';
 import { Layout, Menu, theme } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { getRoutePath } from '../routing/routes';
@@ -18,20 +18,34 @@ const SiderForm = ({ userName }) => {
         navigate(getRoutePath(ROUTES_ID.updatepassword));
     };
 
-    const handleProfileClick = () => {
+    const handleUpdateProfile = () => {
         navigate(getRoutePath(ROUTES_ID.profile));
+    };
+
+    const handleMyOrders = () => {
+        navigate(getRoutePath(ROUTES_ID.myOrders));
     };
 
     const items = [
         {
             key: 'sub1',
             icon: <UserOutlined />,
-            label: <span onClick={handleProfileClick} style={{ cursor: 'pointer' }}>{userName}</span>,
+            label: <span style={{ cursor: 'pointer' }}>{userName}</span>,
             children: [
                 {
                     key: '1',
+                    label: 'Update Profile',
+                    onClick: handleUpdateProfile,
+                },
+                {
+                    key: '2',
                     label: 'Change Password',
                     onClick: handleUpdatePassword,
+                },
+                {
+                    key: '3',
+                    label: 'My Orders',
+                    onClick: handleMyOrders,
                 }
             ],
         },
@@ -50,6 +64,8 @@ const SiderForm = ({ userName }) => {
                         background: colorBgContainer,
                     }}
                 />
+                <Layout.Content style={{ padding: '0 24px', minHeight: 280 }}>
+                </Layout.Content>
             </Layout>
         </Layout>
     );
