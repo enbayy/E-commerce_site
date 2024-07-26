@@ -35,26 +35,25 @@ function Navbar() {
     return (
         <div className="navbar-container">
             <Space>
-                <Link to={getRoutePath(ROUTES_ID.home)} style={{ fontSize: "15px", display: "flex", alignItems: "center" }}>Home</Link>
-                <Link to={getRoutePath(ROUTES_ID.contact)} style={{ fontSize: "15px", display: "flex", alignItems: "center" }}>Contact</Link>
-                <Link to={getRoutePath(ROUTES_ID.category)} style={{ fontSize: "15px", display: "flex", alignItems: "center" }}>Categories</Link>
-                <Link to={getRoutePath(ROUTES_ID.favorite)} style={{ fontSize: "15px", display: "flex", alignItems: "center" }} >Favorites</Link>
-                <Link to={getRoutePath(ROUTES_ID.payment)} style={{ fontSize: "15px", display: "flex", alignItems: "center" }} >Payment</Link>
+                <Link to={getRoutePath(ROUTES_ID.home)}>Home</Link>
+                <Link to={getRoutePath(ROUTES_ID.contact)}>Contact</Link>
+                <Link to={getRoutePath(ROUTES_ID.category)}>Categories</Link>
+                <Link to={getRoutePath(ROUTES_ID.favorite)}>Favorites</Link>
             </Space>
             <Space>
-                <Link to={getRoutePath(ROUTES_ID.skep)}><FaShoppingBasket style={{ fontSize: "30px", display: "flex", alignItems: "center" }} /></Link>
+                <Link to={getRoutePath(ROUTES_ID.skep)}><FaShoppingBasket className='icon'/></Link>
                 {isAuthenticated && (
                     <>
                         <Link to={getRoutePath(ROUTES_ID.profile)}>
-                            <RxAvatar style={{ fontSize: "30px", display: "flex", alignItems: "center" }} />
+                            <RxAvatar className='icon'/>
                         </Link>
                     </>
                 )}
                 {!isAuthenticated && (
-                    <Link to={getRoutePath(ROUTES_ID.login)}><HiLogin style={{ fontSize: "30px", display: "flex", alignItems: "center" }} /></Link>
+                    <Link to={getRoutePath(ROUTES_ID.login)}><HiLogin className='icon'/></Link>
                 )}
                 {isAuthenticated && (
-                    <Link onClick={handleLogout}><IoLogOut style={{ fontSize: "30px", display: "flex", alignItems: "center" }} /></Link>
+                    <Link onClick={handleLogout}><IoLogOut className='icon'/></Link>
                 )}
             </Space>
         </div>
