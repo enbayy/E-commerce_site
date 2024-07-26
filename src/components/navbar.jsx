@@ -1,5 +1,5 @@
-import { notification, Space } from 'antd';
 import React from 'react';
+import { Badge, notification, Space } from 'antd';
 import { Link } from 'react-router-dom';
 import { getRoutePath } from '../routing/routes';
 import { ROUTES_ID } from '../routing/routes_id';
@@ -9,9 +9,12 @@ import { useAuth } from '../utils/AuthContext';
 import { FaShoppingBasket } from "react-icons/fa";
 import { IoLogOut } from "react-icons/io5";
 import { HiLogin } from "react-icons/hi";
+import { useCart } from '../utils/CartContext';
+
 
 function Navbar() {
     const { isAuthenticated, logout } = useAuth();
+    const { cartItems } = useCart(); // Get cart items from the context
 
     const handleLogout = async () => {
         const success = await logout();
@@ -41,19 +44,25 @@ function Navbar() {
                 <Link to={getRoutePath(ROUTES_ID.favorite)}>Favorites</Link>
             </Space>
             <Space>
-                <Link to={getRoutePath(ROUTES_ID.skep)}><FaShoppingBasket className='icon'/></Link>
+                <Link to={getRoutePath(ROUTES_ID.skep)}>
+                    <Badge color='blue' count={cartItems.length}> {/* Use cartItems.length as the count */}
+                        <FaShoppingBasket className='icon' />
+                    </Badge>
+                </Link>
                 {isAuthenticated && (
                     <>
                         <Link to={getRoutePath(ROUTES_ID.profile)}>
-                            <RxAvatar className='icon'/>
+                            <RxAvatar className='icon' />
                         </Link>
                     </>
                 )}
                 {!isAuthenticated && (
-                    <Link to={getRoutePath(ROUTES_ID.login)}><HiLogin className='icon'/></Link>
+                    <Link to={getRoutePath(ROUTES_ID.login)}>
+                        <HiLogin className='icon' />
+                    </Link>
                 )}
                 {isAuthenticated && (
-                    <Link onClick={handleLogout}><IoLogOut className='icon'/></Link>
+                    <Link onClick={handleLogout}><IoLogOut className='icon' /></Link>
                 )}
             </Space>
         </div>

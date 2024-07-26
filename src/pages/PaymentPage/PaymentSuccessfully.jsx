@@ -12,7 +12,7 @@ function PaymentSuccessfully() {
 
     return (
         <div className='payment-successfully'>
-            <CheckCircleOutlined style={{fontSize:"50px"}}/>
+            <CheckCircleOutlined style={{ fontSize: "50px" }} />
             <h3>Your payment has been made successfully.</h3>
             <Button onClick={handleGoHome}>
                 Go Home

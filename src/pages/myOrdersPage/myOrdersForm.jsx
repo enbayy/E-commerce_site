@@ -1,7 +1,6 @@
 import React from 'react';
 import { useCart } from '../../utils/CartContext';
-import { List, Button } from 'antd';
-import { axiosInstance } from '../../network/axiosInstance';
+import { List } from 'antd';
 
 const MyOrdersForm = () => {
     const { cartItems } = useCart();
@@ -11,25 +10,6 @@ const MyOrdersForm = () => {
     };
 
     const totalPrice = calculateTotalPrice();
-
-    const handlePost = () => {
-        const postData = {
-            items: cartItems.map(item => ({
-                title: item.title,
-                price: item.price,
-                imageSrc: item.imageSrc
-            })),
-            totalPrice
-        };
-
-        axiosInstance.post('/myOrders', postData)
-            .then((res) => {
-                console.log(res.data);
-            })
-            .catch((err) => {
-                console.error(err.message);
-            });
-    };
 
     return (
         <div className="my-orders-container">
@@ -51,9 +31,6 @@ const MyOrdersForm = () => {
             </div>
             <h3 style={{ display: "flex", justifyContent: "center" }}>Total Price: {totalPrice} TL</h3>
             <div style={{ display: "flex", justifyContent: "center" }}>
-                <Button type="primary" onClick={handlePost}>
-                    Save
-                </Button>
             </div>
         </div>
     );

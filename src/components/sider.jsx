@@ -29,8 +29,8 @@ const SiderForm = ({ userName }) => {
     const items = [
         {
             key: 'sub1',
-            icon: <UserOutlined />,
-            label: <span style={{ cursor: 'pointer' }}>{userName}</span>,
+            icon: <UserOutlined style={{ cursor: 'pointer', color: "#fff" }} />,
+            label: <p style={{ cursor: 'pointer', color: "#fff" }}>{userName}</p>,
             children: [
                 {
                     key: '1',

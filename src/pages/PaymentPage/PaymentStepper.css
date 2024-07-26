@@ -14,6 +14,7 @@
     justify-content: center;
     height: 100%;
     text-align: center;
+    margin-left: 10%;
 }
 
 .payment-stepper-content {
@@ -70,7 +71,6 @@
     background-color: #fff;
     padding: 0px;
     max-height: 450px;
-
 }
 
 .product-list-container {
@@ -82,7 +82,6 @@
     padding: 5px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-
 }
 
 .address-form {
@@ -92,7 +91,6 @@
     padding: 20px;
     background: #fff;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .address-form .ant-form-item {

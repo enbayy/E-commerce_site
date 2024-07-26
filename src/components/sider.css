@@ -1,4 +1,5 @@
-.my-orders-container, .order-list-container {
+.my-orders-container,
+.order-list-container {
     min-height: 100vh;
 }
 

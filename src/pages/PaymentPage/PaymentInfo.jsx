@@ -1,6 +1,9 @@
 import React from 'react';
-import { Form, Input, Button, Row, Col } from 'antd';
+import { Form, Input, Button, Row, Col, DatePicker } from 'antd';
 import { axiosInstance } from '../../network/axiosInstance';
+import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+dayjs.extend(customParseFormat);
 
 function PaymentInfo({ onFinish, setUserInfo, userInfo }) {
     const handlePost = () => {
@@ -28,8 +31,24 @@ function PaymentInfo({ onFinish, setUserInfo, userInfo }) {
             });
     };
 
+    const formatCardNumber = (value) => {
+        const cleaned = value.replace(/\D/g, '').substring(0, 16);
+        return cleaned.match(/.{1,4}/g)?.join(' ') || cleaned;
+    };
+
+    const handleCardNumberChange = (e) => {
+        const rawValue = e.target.value;
+        const formattedCardNumber = formatCardNumber(rawValue);
+        setUserInfo({ ...userInfo, cardNumber: formattedCardNumber });
+    };
+
+    const monthFormat = 'MM/YYYY';
+    const handleDateChange = (date) => {
+        setUserInfo((prevUserInfo) => ({ ...prevUserInfo, expirationDate: date ? date.format(monthFormat) : '' }));
+    };
+
     return (
-        <Form style={{padding:"50px"}} onFinish={handlePost} layout='vertical'>
+        <Form style={{ padding: "50px" }} onFinish={handlePost} layout='vertical'>
             <Form.Item
                 label="Card Owner"
                 name="cardName"
@@ -38,12 +57,25 @@ function PaymentInfo({ onFinish, setUserInfo, userInfo }) {
                 <Input onChange={(e) => setUserInfo({ ...userInfo, cardOwner: e.target.value })} />
             </Form.Item>
             <Form.Item
-            style={{width:"60%"}}
                 label="Card Number"
                 name="cardNumber"
-                rules={[{ required: true, message: 'Please enter your card number!' }]}
+                rules={[
+                    {
+                        required: true,
+                        message: 'Please enter your card number!'
+                    },
+                    {
+                        pattern: /^(\d{4} ){3}\d{4}$/,
+                        message: 'Please enter a valid card number format!'
+                    }
+                ]}
             >
-                <Input onChange={(e) => setUserInfo({ ...userInfo, cardNumber: e.target.value })} />
+                <Input
+                    onChange={handleCardNumberChange}
+                    value={userInfo.cardNumber}
+                    placeholder="0000 0000 0000 0000"
+                    maxLength={19}
+                />
             </Form.Item>
             <Row gutter={16}>
                 <Col span={12}>
@@ -52,7 +84,12 @@ function PaymentInfo({ onFinish, setUserInfo, userInfo }) {
                         name="expirationDate"
                         rules={[{ required: true, message: 'Please enter the expiration date!' }]}
                     >
-                        <Input onChange={(e) => setUserInfo({ ...userInfo, expirationDate: e.target.value })} />
+                        <DatePicker
+                            defaultValue={dayjs('01/2015', monthFormat)}
+                            format={monthFormat}
+                            picker="month"
+                            onChange={handleDateChange}
+                        />
                     </Form.Item>
                 </Col>
                 <Col span={12}>
@@ -61,7 +98,7 @@ function PaymentInfo({ onFinish, setUserInfo, userInfo }) {
                         name="cvv"
                         rules={[{ required: true, message: 'Please enter your CVV number!' }]}
                     >
-                        <Input style={{ width: "40%" }} onChange={(e) => setUserInfo({ ...userInfo, cvv: e.target.value })} />
+                        <Input style={{ width: "50%" }} onChange={(e) => setUserInfo({ ...userInfo, cvv: e.target.value })} />
                     </Form.Item>
                 </Col>
             </Row>
