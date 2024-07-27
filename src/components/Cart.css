@@ -6,16 +6,19 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
     cursor: auto;
+    height: 650px;
 }
 
 .card-content {
     padding: 16px;
+    height: calc(100% - 50px);
+    overflow: hidden;
 }
 
 .button-container {
     display: flex;
     justify-content: space-between;
-    margin-top: 16px;
+    margin-top: auto;
 }
 
 .favorite-button {
@@ -30,6 +33,8 @@
 
 .card-container img {
     border-radius: 4px;
+    height: 400px;
+    object-fit: cover;
 }
 
 .basket-button.in-cart {
