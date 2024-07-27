@@ -1,0 +1,20 @@
+.favori-container {
+    padding: 16px;
+}
+
+.favori-card {
+    width: 100%;
+    cursor: auto;
+}
+
+.price {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+}

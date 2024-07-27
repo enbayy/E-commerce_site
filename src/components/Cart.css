@@ -31,3 +31,13 @@
 .card-container img {
     border-radius: 4px;
 }
+
+.basket-button.in-cart {
+    background-color: green;
+    color: white;
+}
+
+.favorite-button.in-favori {
+    background-color: #ff4d4f;
+    color: white;
+}

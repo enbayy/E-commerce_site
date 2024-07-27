@@ -19,7 +19,6 @@ const ProductDetails = ({ onFinish, initialValues }) => {
 
     return (
         <div className="product-details-container">
-            <h2 style={{ display: "flex", justifyContent: "center" }}>Product Details</h2>
             <div className="product-list-container">
                 <List
                     itemLayout="vertical"

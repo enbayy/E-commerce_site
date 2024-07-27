@@ -13,7 +13,6 @@ function AddressForm({ onFinish, initialValues, setUserInfo, userInfo }) {
             if (isAuthenticated) {
                 try {
                     const attributes = await fetchUserAttributes();
-                    // Assume attributes is an object with keys as attribute names and values as attribute values
                     const userEmail = attributes.email || '';
                     setEmail(userEmail);
                     form.setFieldsValue({ email: userEmail });

@@ -9,12 +9,12 @@ import { useAuth } from '../utils/AuthContext';
 import { FaShoppingBasket } from "react-icons/fa";
 import { IoLogOut } from "react-icons/io5";
 import { HiLogin } from "react-icons/hi";
-import { useCart } from '../utils/CartContext';
-
+import { useCart, useFavori } from '../utils/CartContext';
 
 function Navbar() {
     const { isAuthenticated, logout } = useAuth();
-    const { cartItems } = useCart(); // Get cart items from the context
+    const { cartItems } = useCart();
+    const { favoriItems } = useFavori(); 
 
     const handleLogout = async () => {
         const success = await logout();
@@ -40,12 +40,13 @@ function Navbar() {
             <Space>
                 <Link to={getRoutePath(ROUTES_ID.home)}>Home</Link>
                 <Link to={getRoutePath(ROUTES_ID.contact)}>Contact</Link>
-                <Link to={getRoutePath(ROUTES_ID.category)}>Categories</Link>
+                <Badge color='pink' count={favoriItems.length}>
                 <Link to={getRoutePath(ROUTES_ID.favorite)}>Favorites</Link>
+                </Badge>
             </Space>
             <Space>
                 <Link to={getRoutePath(ROUTES_ID.skep)}>
-                    <Badge color='blue' count={cartItems.length}> {/* Use cartItems.length as the count */}
+                    <Badge color='blue' count={cartItems.length}>
                         <FaShoppingBasket className='icon' />
                     </Badge>
                 </Link>
