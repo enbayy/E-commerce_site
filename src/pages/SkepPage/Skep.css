@@ -10,10 +10,14 @@
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    cursor: auto;
+    height: 700px;
 }
 
 .card-content {
     padding: 16px;
+    height: calc(100% - 50px);
+    overflow: hidden;
 }
 
 .price {
@@ -24,6 +28,7 @@
 
 .card-container img {
     border-radius: 4px;
+    height: 400px;
 }
 
 .total-price-container {

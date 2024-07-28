@@ -5,6 +5,7 @@
 .favori-card {
     width: 100%;
     cursor: auto;
+    height: 700px;
 }
 
 .price {
@@ -17,4 +18,15 @@
     display: flex;
     justify-content: space-between;
     margin-top: 16px;
+}
+
+.card-content {
+    padding: 16px;
+    height: calc(100% - 50px);
+    overflow: hidden;
+}
+
+.favori-card img {
+    border-radius: 4px;
+    height: 400px;
 }

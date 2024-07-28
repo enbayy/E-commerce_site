@@ -32,14 +32,16 @@ const FavoriForm = () => {
                                 cover={<img alt={item.title} src={item.imageSrc} />}
                                 className="favori-card"
                             >
-                                <Meta title={item.title} description={item.description} />
-                                <p className="price">Price: {item.price} TL</p>
-                                <Button
-                                    className='remove-button'
-                                    onClick={() => handleRemove(item.id)}
-                                >
-                                    Remove <FaTrash />
-                                </Button>
+                                <div className="card-content">
+                                    <Meta title={item.title} description={item.description} />
+                                    <p className="price">Price: {item.price} TL</p>
+                                    <Button
+                                        className='remove-button'
+                                        onClick={() => handleRemove(item.id)}
+                                    >
+                                        Remove <FaTrash />
+                                    </Button>
+                                </div>
                             </Card>
                         </Col>
                     ))}
