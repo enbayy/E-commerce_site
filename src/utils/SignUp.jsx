@@ -35,7 +35,7 @@ async function handleSignUp({ username, password, email }) {
     console.log(user);
     notification.success({
       message: 'Registration Successful',
-      description: 'The user has been successfully registered.',
+      description: 'Confirm your email',
       placement: 'topRight',
       duration: 3,
     });
