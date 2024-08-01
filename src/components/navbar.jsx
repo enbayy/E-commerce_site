@@ -14,7 +14,7 @@ import { useCart, useFavori } from '../utils/CartContext';
 function Navbar() {
     const { isAuthenticated, logout } = useAuth();
     const { cartItems } = useCart();
-    const { favoriItems } = useFavori(); 
+    const { favoriItems } = useFavori();
 
     const handleLogout = async () => {
         const success = await logout();
@@ -41,8 +41,9 @@ function Navbar() {
                 <Link to={getRoutePath(ROUTES_ID.home)}>Home</Link>
                 <Link to={getRoutePath(ROUTES_ID.contact)}>Contact</Link>
                 <Badge color='pink' count={favoriItems.length}>
-                <Link to={getRoutePath(ROUTES_ID.favorite)}>Favorites</Link>
+                    <Link to={getRoutePath(ROUTES_ID.favorite)}>Favorites</Link>
                 </Badge>
+                <Link to={getRoutePath(ROUTES_ID.category)}>Category</Link>
             </Space>
             <Space>
                 <Link to={getRoutePath(ROUTES_ID.skep)}>
