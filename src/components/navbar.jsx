@@ -1,6 +1,6 @@
 import React from 'react';
 import { Badge, notification, Space } from 'antd';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { getRoutePath } from '../routing/routes';
 import { ROUTES_ID } from '../routing/routes_id';
 import "./Navbar.css";
@@ -15,6 +15,7 @@ function Navbar() {
     const { isAuthenticated, logout } = useAuth();
     const { cartItems } = useCart();
     const { favoriItems } = useFavori();
+    const navigate = useNavigate();
 
     const handleLogout = async () => {
         const success = await logout();
@@ -43,7 +44,16 @@ function Navbar() {
                 <Badge color='pink' count={favoriItems.length}>
                     <Link to={getRoutePath(ROUTES_ID.favorite)}>Favorites</Link>
                 </Badge>
-                <Link to={getRoutePath(ROUTES_ID.category)}>Category</Link>
+                <div className="category-dropdown">
+                    <Link>Category</Link>
+                    <div className="category-dropdown-content">
+                        <Link to={getRoutePath(ROUTES_ID.tshirt)}>T-shirts</Link>
+                        <Link to={getRoutePath(ROUTES_ID.pant)}>Pants</Link>
+                        <Link to={getRoutePath(ROUTES_ID.short)}>Shorts</Link>
+                        <Link to={getRoutePath(ROUTES_ID.hat)}>Hats</Link>
+                        <Link to={getRoutePath(ROUTES_ID.bag)}>Bags</Link>
+                    </div>
+                </div>
             </Space>
             <Space>
                 <Link to={getRoutePath(ROUTES_ID.skep)}>

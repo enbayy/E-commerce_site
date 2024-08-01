@@ -60,7 +60,7 @@ function Cart({ id, imageSrc, title, description, price }) {
     };
 
     const handleNavigateCart = () => {
-        navigate(`detail/${id}`);
+        navigate(`/detail/${id}`);
     };
 
     return (
@@ -74,14 +74,14 @@ function Cart({ id, imageSrc, title, description, price }) {
                 <Meta title={title} description={description} />
                 <p className="price">Price: {price} TL</p>
                 <div className='button-container'>
-                    <Button 
+                    <Button
                         className={`favorite-button ${isFavori ? 'in-favori' : ''}`}
                         onClick={handleAddToFavori}
                     >
                         Favorite <MdFavoriteBorder />
                     </Button>
-                    <Button 
-                        className={`basket-button ${isInCart ? 'in-cart' : ''}`} 
+                    <Button
+                        className={`basket-button ${isInCart ? 'in-cart' : ''}`}
                         onClick={handleAddToCart}
                     >
                         <FaShoppingBasket />

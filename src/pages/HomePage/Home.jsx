@@ -3,7 +3,6 @@ import MainLayout from '../../layout/MainLayoutPage/MainLayout';
 import Navbar from '../../components/navbar';
 import { Outlet, useLocation } from 'react-router-dom';
 import { getRouteTitle } from '../../routing/routes';
-import HomeForm from './pageComponents/HomeForm/HomeForm';
 
 function Home() {
   const location = useLocation();

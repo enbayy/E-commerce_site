@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import Cart from '../../../../components/Cart';
-import { axiosInstance } from '../../../../network/axiosInstance';
 import { Col, Row } from 'antd';
+import { axiosInstance } from '../../../network/axiosInstance';
+import Cart from '../../../components/Cart';
 
-function HomeForm() {
+function PantForm() {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
         axiosInstance.get('/products')
-            .then((res) => setProducts(res.data))
+            .then((res) => {
+                const filteredProducts = res.data.filter(product => product.type === 'pant');
+                setProducts(filteredProducts);
+            })
             .catch((err) => console.log(err));
     }, []);
 
@@ -16,7 +19,7 @@ function HomeForm() {
         <div className="page-container">
             <Row gutter={16} style={{marginRight:"0px"}}>
                 {products.map((e) => (
-                    <Col key={e.id} xs={24} sm={12} md={8} lg={6}>
+                    <Col key={e.id} xs={24} sm={12} md={8} lg={6} >
                         <Cart
                             id={e.id}
                             title={e.name}
@@ -31,4 +34,4 @@ function HomeForm() {
     );
 }
 
-export default HomeForm;
+export default PantForm;

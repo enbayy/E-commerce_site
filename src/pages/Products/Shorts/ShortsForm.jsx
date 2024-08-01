@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import Cart from '../../../../components/Cart';
-import { axiosInstance } from '../../../../network/axiosInstance';
 import { Col, Row } from 'antd';
+import { axiosInstance } from '../../../network/axiosInstance';
+import Cart from '../../../components/Cart';
 
-function HomeForm() {
+
+function ShortForm() {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
         axiosInstance.get('/products')
-            .then((res) => setProducts(res.data))
+            .then((res) => {
+                const filteredProducts = res.data.filter(product => product.type === 'short');
+                setProducts(filteredProducts);
+            })
             .catch((err) => console.log(err));
     }, []);
 
@@ -31,4 +35,4 @@ function HomeForm() {
     );
 }
 
-export default HomeForm;
+export default ShortForm;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { axiosInstance } from '../../../network/axiosInstance';
-import './DetailPage.css'; // CSS dosyasını import edin
+import './DetailPage.css';
 
 const DetailPage = () => {
     const { id } = useParams();
@@ -11,6 +11,7 @@ const DetailPage = () => {
         axiosInstance.get(`/products/${id}`)
             .then((res) => setProduct(res.data))
             .catch((err) => console.log(err));
+            document.title = 'Detail Page';
     }, [id]);
 
     if (!product) {

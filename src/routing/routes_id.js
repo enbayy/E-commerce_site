@@ -14,5 +14,10 @@ export const ROUTES_ID = {
     detail: "detail",
     updatepassword: "updatepassword",
     homeForm: "homeForm",
-    myOrders:"myOrders"
+    myOrders: "myOrders",
+    tshirt: "tshirt",
+    short: "short",
+    pant: "pant",
+    bag: "bag",
+    hat: "hat",
 }
