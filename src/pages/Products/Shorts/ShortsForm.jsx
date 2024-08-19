@@ -3,7 +3,6 @@ import { Col, Row } from 'antd';
 import { axiosInstance } from '../../../network/axiosInstance';
 import Cart from '../../../components/Cart';
 
-
 function ShortForm() {
     const [products, setProducts] = useState([]);
 

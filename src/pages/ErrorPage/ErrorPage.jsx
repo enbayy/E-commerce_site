@@ -9,7 +9,6 @@ export class ErrorBoundaryPage extends React.Component {
     }
 
     componentDidCatch(error) {
-        // Log or store the error
         this.setState({ errorMsg: error.message, errorStack: error.stack });
     }
 

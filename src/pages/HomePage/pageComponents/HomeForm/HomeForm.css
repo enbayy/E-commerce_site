@@ -1,0 +1,21 @@
+.page-container {
+    padding: 16px;
+}
+
+.input {
+    width: 80%;
+    height: 45px;
+    margin: 16px 16px 16px 16px;
+    margin-left: 10%;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    outline: none;
+    border: none;
+}
+
+.products-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 16px;
+}

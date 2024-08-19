@@ -1,7 +1,6 @@
 import React from 'react';
 import { Card, Row, Col, Button } from 'antd';
 import Meta from 'antd/es/card/Meta';
-
 import './Favorite.css';
 import { FaTrash } from 'react-icons/fa';
 import { notification } from 'antd';
