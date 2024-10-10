@@ -1,6 +1,6 @@
 .skep-container {
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: #fff;
 }
 
 .card-container {
@@ -52,4 +52,8 @@
 .quantity {
     font-size: 16px;
     font-weight: bold;
+}
+
+.ant-layout .ant-layout-footer {
+    background-color: white
 }

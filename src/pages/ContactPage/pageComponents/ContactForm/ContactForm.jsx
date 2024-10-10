@@ -71,7 +71,7 @@ const ContactForm = ({ onFinish }) => (
             <Form.Item name={['user', 'introduction']} label="Introduction">
                 <Input.TextArea
                     style={{ height: '100px' }}
-                    placeholder="Tell us about yourself"
+                    placeholder="Contact us"
                 />
             </Form.Item>
             <Form.Item

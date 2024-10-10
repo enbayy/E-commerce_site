@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { fetchUserAttributes, updateUserAttribute, deleteUserAttributes } from 'aws-amplify/auth';
 import { Form, Input, Button, notification } from 'antd';
-import './../Profile.css';
+import '../Profile.css';
 
 const UserProfileForm = () => {
     const [attributes, setAttributes] = useState({
@@ -113,53 +113,63 @@ const UserProfileForm = () => {
             <div className="saved-data-container">
                 <Form className="profile-form" onFinish={handleSubmit}>
                     <h2>User Profile</h2>
-                    <Form.Item label="Email:">
-                        <Input
-                            className='input-profile-email'
-                            type="email"
-                            name="email"
-                            value={attributes.email}
-                            onChange={handleChange}
-                            disabled
-                        />
-                    </Form.Item>
-                    <Form.Item label="Name:">
-                        <Input
-                            className='input-profile-name'
-                            type="text"
-                            name="name"
-                            value={attributes.name}
-                            onChange={handleChange}
-                        />
-                    </Form.Item>
-                    <Form.Item label="Age:">
-                        <Input
-                            className='input-profile-age'
-                            type="number"
-                            name="age"
-                            value={attributes.age}
-                            onChange={handleChange}
-                        />
-                    </Form.Item>
-                    <Form.Item label="Gender:">
-                        <Input
-                            className='input-profile-gender'
-                            type="text"
-                            name="gender"
-                            value={attributes.gender}
-                            onChange={handleChange}
-                        />
-                    </Form.Item>
-                    <Form.Item label="Address:">
-                        <Input
-                            className='input-profile-address'
-                            type="text"
-                            name="address"
-                            value={attributes.address}
-                            onChange={handleChange}
-                        />
-                    </Form.Item>
-                    <Form.Item>
+                    <div className='form-item'>
+                        <Form.Item label="Email:">
+                            <Input
+                                className='input-profile-email'
+                                type="email"
+                                name="email"
+                                value={attributes.email}
+                                onChange={handleChange}
+                                disabled
+                            />
+                        </Form.Item>
+                    </div>
+                    <div className='form-item'>
+                        <Form.Item label="Name:">
+                            <Input
+                                className='input-profile-name'
+                                type="text"
+                                name="name"
+                                value={attributes.name}
+                                onChange={handleChange}
+                            />
+                        </Form.Item>
+                    </div>
+                    <div className='form-item'>
+                        <Form.Item label="Age:">
+                            <Input
+                                className='input-profile-age'
+                                type="number"
+                                name="age"
+                                value={attributes.age}
+                                onChange={handleChange}
+                            />
+                        </Form.Item>
+                    </div>
+                    <div className='form-item'>
+                        <Form.Item label="Gender:">
+                            <Input
+                                className='input-profile-gender'
+                                type="text"
+                                name="gender"
+                                value={attributes.gender}
+                                onChange={handleChange}
+                            />
+                        </Form.Item>
+                    </div>
+                    <div className='form-item'>
+                        <Form.Item label="Address:">
+                            <Input
+                                className='input-profile-address'
+                                type="text"
+                                name="address"
+                                value={attributes.address}
+                                onChange={handleChange}
+                            />
+                        </Form.Item>
+                    </div>
+                    <Form.Item className='profile-buttons'>
                         <Button type="primary" htmlType="submit">Update</Button>
                         <Button type="default" onClick={handleClear} style={{ marginLeft: '10px' }}>Clear</Button>
                     </Form.Item>

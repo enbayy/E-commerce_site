@@ -38,7 +38,7 @@ function Navbar() {
 
     return (
         <div className="navbar-container">
-            <Space>
+            <Space className='space'>
                 <Link to={getRoutePath(ROUTES_ID.home)}>Home</Link>
                 <Link to={getRoutePath(ROUTES_ID.contact)}>Contact</Link>
                 <Badge color='pink' count={favoriItems.length}>

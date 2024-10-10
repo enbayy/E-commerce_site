@@ -30,24 +30,24 @@ const SiderForm = ({ userName }) => {
     const items = [
         {
             key: 'sub1',
-            icon: <UserOutlined style={{ cursor: 'pointer', color: "#fff" }} />,
-            label: <p style={{ cursor: 'pointer', color: "#fff" }}>{userName}Settings</p>,
+            icon: <UserOutlined style={{ cursor: 'pointer', color: "wheat" }} />,
+            label: <p style={{ cursor: 'pointer', color: "wheat" }}>{userName} Settings</p>,
             children: [
                 {
                     key: '1',
-                    label: 'Update Profile',
+                    label: <span className='items-label'>Update Profile</span>,
                     onClick: handleUpdateProfile,
                 },
                 {
                     key: '2',
-                    label: 'Change Password',
+                    label: <span className='items-label'>Change Password</span>,
                     onClick: handleUpdatePassword,
                 },
                 {
                     key: '3',
-                    label: 'My Orders',
+                    label: <span className='items-label'>My Orders</span>,
                     onClick: handleMyOrders,
-                }
+                },
             ],
         },
     ];

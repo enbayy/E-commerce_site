@@ -1,5 +1,6 @@
 .favori-container {
     padding: 16px;
+    background-color: white;
 }
 
 .favori-card {
@@ -29,4 +30,8 @@
 .favori-card img {
     border-radius: 4px;
     height: 400px;
+}
+
+.ant-layout-footer {
+    background-color: white;
 }

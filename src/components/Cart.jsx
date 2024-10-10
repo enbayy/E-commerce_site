@@ -86,7 +86,7 @@ function Cart({ id, imageSrc, title, description, price }) {
                     >
                         <FaShoppingBasket />
                     </Button>
-                    <Button className='basket-button' onClick={handleNavigateCart}>
+                    <Button className='review-button' onClick={handleNavigateCart}>
                         Review
                     </Button>
                 </div>
