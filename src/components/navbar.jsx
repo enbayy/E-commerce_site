@@ -66,15 +66,13 @@ function Navbar() {
                         <Link to={getRoutePath(ROUTES_ID.profile)}>
                             <RxAvatar className='icon' />
                         </Link>
+                        <Link onClick={handleLogout}><IoLogOut className='icon' /></Link>
                     </>
                 )}
                 {!isAuthenticated && (
                     <Link to={getRoutePath(ROUTES_ID.login)}>
                         <HiLogin className='icon' />
                     </Link>
-                )}
-                {isAuthenticated && (
-                    <Link onClick={handleLogout}><IoLogOut className='icon' /></Link>
                 )}
             </Space>
         </div>

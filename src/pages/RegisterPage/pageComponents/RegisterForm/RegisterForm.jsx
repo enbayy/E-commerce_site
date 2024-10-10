@@ -9,24 +9,6 @@ import EmailInput from '../../../../components/EmailInput';
 import PasswordInput from '../../../../components/PasswordInput';
 import ConfirmPassword from '../../../../components/ConfirmPassword';
 
-const formItemLayout = {
-    labelCol: {
-        xs: { span: 24 },
-        sm: { span: 8 },
-    },
-    wrapperCol: {
-        xs: { span: 24 },
-        sm: { span: 16 },
-    },
-};
-
-const tailFormItemLayout = {
-    wrapperCol: {
-        xs: { span: 24, offset: 0 },
-        sm: { span: 16, offset: 8 },
-    },
-};
-
 const RegisterForm = ({ onFinish }) => {
     const [form] = Form.useForm();
 
@@ -45,57 +27,51 @@ const RegisterForm = ({ onFinish }) => {
     };
 
     return (
-        <div className='register-container'>
-            <Form
-                className='register-form'
-                layout='vertical'
-                {...formItemLayout}
-                form={form}
-                name="register"
-                onFinish={handleFormSubmit}
-                initialValues={{
-                    residence: ['zhejiang', 'hangzhou', 'xihu'],
-                    prefix: '86',
-                }}
-                scrollToFirstError
-            >
-
-                <Form.Item
-                    name="name"
-                    label="Name"
-                    tooltip="What do you want others to call you?"
-                    rules={[
-                        {
+        <div className="register-container">
+            <div className="register-card">
+                <h2 className="register-title">Register</h2>
+                <Form
+                    className="register-form"
+                    layout="vertical"
+                    form={form}
+                    name="register"
+                    onFinish={handleFormSubmit}
+                    scrollToFirstError
+                >
+                    <Form.Item
+                        name="name"
+                        label="Name"
+                        tooltip="What do you want others to call you?"
+                        rules={[{
                             required: true,
                             message: 'Please input your name!',
                             whitespace: true,
-                        },
-                    ]}
-                    className="register-form-item"
-                    style={{ width: '100%' }}
-                >
-                    <Input style={{ width: '100%' }} />
-                </Form.Item>
+                        }]}
+                        className="register-form-item"
+                    >
+                        <Input />
+                    </Form.Item>
 
-                <EmailInput />
+                    <EmailInput />
 
-                <PasswordInput
-                    name={"password"}
-                    label={"Password"}
-                />
+                    <PasswordInput
+                        name="password"
+                        label="Password"
+                    />
 
-                <ConfirmPassword />
+                    <ConfirmPassword />
 
-                <Form.Item {...tailFormItemLayout}>
-                    <Button type="primary" htmlType="submit">
-                        Register
-                    </Button>
-                    <Button type="default" onClick={handleGoLogin}>
-                        Go Login
-                    </Button>
-                </Form.Item>
-            </Form>
-        </div >
+                    <Form.Item className="register-form-buttons">
+                        <Button type="primary" htmlType="submit" className="register-button">
+                            Register
+                        </Button>
+                        <Button type="default" onClick={handleGoLogin} className="login-button">
+                            Go to Login
+                        </Button>
+                    </Form.Item>
+                </Form>
+            </div>
+        </div>
     );
 };
 

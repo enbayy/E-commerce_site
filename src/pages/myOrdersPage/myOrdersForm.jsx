@@ -14,6 +14,8 @@ const MyOrdersForm = () => {
     return (
         <div className="my-orders-container">
             <h2 style={{ display: "flex", justifyContent: "center" }}>My Orders</h2>
+            <h3 style={{ display: "flex", justifyContent: "center" }}>Total Price: {totalPrice} TL</h3>
+
             <div className="order-list-container">
                 <List
                     itemLayout="vertical"
@@ -28,9 +30,6 @@ const MyOrdersForm = () => {
                         </List.Item>
                     )}
                 />
-            </div>
-            <h3 style={{ display: "flex", justifyContent: "center" }}>Total Price: {totalPrice} TL</h3>
-            <div style={{ display: "flex", justifyContent: "center" }}>
             </div>
         </div>
     );

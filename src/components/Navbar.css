@@ -2,7 +2,12 @@
     display: flex;
     justify-content: space-between;
     padding: 0 16px;
-    background-color: #001529;
+    background-color: #000000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ant-layout-header {
+    background-color: #000000;
 }
 
 .navbar-container>.ant-space {
@@ -12,10 +17,15 @@
 .navbar-container a {
     color: white;
     text-decoration: none;
-    margin: 0 10px;
-    font-size: 15px;
+    margin: 0 15px;
+    font-size: 16px;
     display: flex;
     align-items: center;
+    transition: color 0.3s;
+}
+
+.navbar-container a:hover {
+    color: #1890ff;
 }
 
 .icon {
@@ -23,6 +33,7 @@
     font-size: 25px;
     display: flex;
     align-items: center;
+    margin-left: 10px;
 }
 
 .category-dropdown {
@@ -37,8 +48,8 @@
     top: 100%;
     left: 0;
     background-color: #001529;
-    min-width: 120px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    min-width: 150px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
@@ -48,8 +59,8 @@
 
 .category-dropdown-content a {
     color: white;
-    padding: 0px;
-    margin-top: -10px;
+    padding: 10px;
+    margin: 0;
     text-decoration: none;
     display: block;
 }

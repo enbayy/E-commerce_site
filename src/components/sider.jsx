@@ -4,6 +4,7 @@ import { Layout, Menu, theme } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { getRoutePath } from '../routing/routes';
 import { ROUTES_ID } from '../routing/routes_id';
+import './sider.css';
 
 const { Header, Sider } = Layout;
 
@@ -30,7 +31,7 @@ const SiderForm = ({ userName }) => {
         {
             key: 'sub1',
             icon: <UserOutlined style={{ cursor: 'pointer', color: "#fff" }} />,
-            label: <p style={{ cursor: 'pointer', color: "#fff" }}>{userName}</p>,
+            label: <p style={{ cursor: 'pointer', color: "#fff" }}>{userName}Settings</p>,
             children: [
                 {
                     key: '1',
@@ -53,15 +54,15 @@ const SiderForm = ({ userName }) => {
 
     return (
         <Layout style={{ minHeight: '100vh' }}>
-            <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
+            <Sider style={{ background: 'black' }} collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
                 <div className="demo-logo-vertical" />
-                <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
+                <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} style={{ background: 'black' }} />
             </Sider>
             <Layout>
                 <Header
                     style={{
                         padding: 0,
-                        background: colorBgContainer,
+                        backgroundColor: '#f7f7f7',
                     }}
                 />
                 <Layout.Content style={{ padding: '0 24px', minHeight: 280 }}>

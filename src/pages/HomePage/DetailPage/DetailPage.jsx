@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { axiosInstance } from '../../../network/axiosInstance';
 import './DetailPage.css';
 
 const DetailPage = () => {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         axiosInstance.get(`/products/${id}`)
             .then((res) => setProduct(res.data))
             .catch((err) => console.log(err));
-            document.title = 'Detail Page';
+        document.title = 'Detail Page';
     }, [id]);
 
     if (!product) {
@@ -27,6 +28,12 @@ const DetailPage = () => {
                 <h1 className="product-title">{product.name}</h1>
                 <p className="product-description">{product.description}</p>
                 <p className="product-price">Price: {product.price}</p>
+                <button
+                    className="back-button"
+                    onClick={() => navigate('/')}
+                >
+                    Go to Home
+                </button>
             </div>
         </div>
     );

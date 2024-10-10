@@ -1,13 +1,13 @@
 import React from 'react';
 import { Button, Form, Input, Select } from 'antd';
-import "../../Contact.css"
+import "../../Contact.css";
 
 const layout = {
     labelCol: {
-        span: 8,
+        span: 24,
     },
     wrapperCol: {
-        span: 16,
+        span: 24,
     },
 };
 
@@ -50,44 +50,34 @@ const ContactForm = ({ onFinish }) => (
             <Form.Item
                 name={['user', 'name']}
                 label="Name"
-                rules={[
-                    {
-                        required: true,
-                    },
-                ]}
+                rules={[{ required: true }]}
             >
-                <Input />
+                <Input placeholder="Enter your name" />
             </Form.Item>
             <Form.Item
                 name="phone"
                 label="Phone Number"
-                rules={[
-                    {
-                        required: true,
-                        message: 'Please input your phone number!',
-                    },
-                ]}
+                rules={[{ required: true, message: 'Please input your phone number!' }]}
             >
-                <Input addonBefore={prefixSelector} style={{ width: '100%' }} />
+                <Input addonBefore={prefixSelector} style={{ width: '100%' }} placeholder="Enter your phone number" />
             </Form.Item>
             <Form.Item
                 name={['user', 'email']}
                 label="Email"
-                rules={[
-                    {
-                        type: 'email',
-                    },
-                ]}
+                rules={[{ type: 'email' }]}
             >
-                <Input />
+                <Input placeholder="Enter your email" />
             </Form.Item>
             <Form.Item name={['user', 'introduction']} label="Introduction">
-                <Input.TextArea />
+                <Input.TextArea
+                    style={{ height: '100px' }}
+                    placeholder="Tell us about yourself"
+                />
             </Form.Item>
             <Form.Item
                 wrapperCol={{
                     ...layout.wrapperCol,
-                    offset: 8,
+                    offset: 0,
                 }}
             >
                 <Button type="primary" htmlType="submit">
