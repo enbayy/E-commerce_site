@@ -1,24 +1,41 @@
 .favori-container {
-    padding: 16px;
+    padding: 20px;
     background-color: white;
 }
 
-.favori-card {
-    width: 100%;
+.card-container {
+    background-color: #f9f9f9;
+    padding: 0px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
     cursor: auto;
-    height: 700px;
+    height: 670px;
+}
+
+.card-container:hover {
+    transform: translateY(-5px);
+}
+
+.ant-card-meta-description {
+    height: 65px;
 }
 
 .price {
     font-size: 16px;
     font-weight: bold;
-    margin-top: 8px;
+    color: #ff5733;
 }
 
-.button-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 16px;
+.remove-button {
+    background-color: wheat;
+    color: rgb(43, 43, 43);
+}
+
+.remove-button:hover {
+    background-color: rgb(43, 43, 43) !important;
+    color: wheat !important;
 }
 
 .card-content {
@@ -27,11 +44,29 @@
     overflow: hidden;
 }
 
-.favori-card img {
+.card-container img {
     border-radius: 4px;
-    height: 400px;
+    height: 440px;
 }
 
 .ant-layout-footer {
     background-color: white;
+}
+
+@media screen and (max-width: 1250px) {
+    .card-container {
+        height: auto;
+    }
+
+    .card-container img {
+        height: 250px;
+    }
+
+    .card-content {
+        padding: 10px;
+    }
+
+    .price {
+        font-size: 14px;
+    }
 }

@@ -70,6 +70,13 @@
     margin: 0;
 }
 
+.custom-badge .ant-badge-count {
+    background-color: wheat;
+    color: black !important;
+    font-weight: bold;
+    font-size: 14px;
+}
+
 @media (max-width: 1200px) {
     .navbar-container a {
         margin: 0 10px;
@@ -88,11 +95,19 @@
     }
 
     .space {
-        gap: 6%;
+        gap: 3%;
     }
 
     .navbar-container a {
         margin: 0 2px;
         margin-left: -20%;
+    }
+
+    .category {
+        margin-left: 10px !important;
+    }
+
+    .favorites {
+        margin-left: -10px !important;
     }
 }

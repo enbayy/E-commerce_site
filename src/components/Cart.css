@@ -4,8 +4,8 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     text-align: center;
     cursor: auto;
-    height: 650px;
-    margin: 16px;
+    height: 670px;
+    margin: 20px 0;
     transition: transform 0.2s;
 }
 
@@ -44,62 +44,52 @@
 }
 
 .favorite-button {
-    background-color: #ff99cc;
-    border-color: #ff99cc;
+    background-color: wheat;
     border-radius: 20px;
     padding: 10px 20px;
     font-weight: bold;
-    border: none;
     transition: background-color 0.3s;
 }
 
 .favorite-button:hover {
-    background-color: #ff80ab;
-    color: white;
+    background-color: rgb(255, 205, 113) !important;
+    color: black !important;
+    border: none !important;
 }
 
 .basket-button {
-    background-color: #99ccff;
-    border-color: #99ccff;
+    background-color: wheat;
     border-radius: 20px;
     padding: 10px 20px;
     font-weight: bold;
-    border: none;
     transition: background-color 0.3s;
 }
 
 .basket-button:hover {
-    background-color: #66b3ff;
+    background-color: rgb(255, 205, 113) !important;
+    color: black !important;
+    border: none !important;
 }
 
 .review-button {
-    background-color: #afb2b2;
-    border-color: #80e0a8;
+    background-color: wheat;
     border-radius: 20px;
     padding: 10px 20px;
     font-weight: bold;
-    border: none;
     transition: background-color 0.3s;
+    color: darkblue;
 }
 
 .review-button:hover {
-    background-color: #66c89b;
+    background-color: rgb(255, 205, 113) !important;
+    color: black !important;
+    border: none !important;
 }
 
 .card-container img {
     border-radius: 4px;
-    height: 400px;
+    height: 440px;
     object-fit: cover;
-}
-
-.basket-button.in-cart {
-    background-color: green;
-    color: white;
-}
-
-.favorite-button.in-favori {
-    background-color: #ff4d4f;
-    color: white;
 }
 
 @media screen and (max-width: 1250px) {
@@ -108,7 +98,9 @@
     }
 
     .card-container img {
-        height: 250px;
+        border-radius: 4px;
+        height: 400px;
+        object-fit: cover;
     }
 
     .card-content {

@@ -1,5 +1,6 @@
 .page-container {
     padding: 16px;
+    background-color: #fff;
 }
 
 .input {
@@ -7,10 +8,10 @@
     height: 45px;
     margin: 16px 16px 16px 16px;
     margin-left: 10%;
-    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 5px wheat;
     border-radius: 20px;
     outline: none;
-    border: none;
+    border: 1px solid wheat;
 }
 
 .products-row {
@@ -18,4 +19,8 @@
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 16px;
+}
+
+.ant-layout-footer {
+    background-color: #fff;
 }

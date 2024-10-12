@@ -21,7 +21,6 @@ const FavoriForm = () => {
 
     return (
         <div className="favori-container">
-            <h2 style={{ display: "flex", justifyContent: "center" }}>My Favorites</h2>
             {favoriItems.length > 0 ? (
                 <Row gutter={[16, 16]}>
                     {favoriItems.map(item => (
@@ -29,7 +28,7 @@ const FavoriForm = () => {
                             <Card
                                 hoverable
                                 cover={<img alt={item.title} src={item.imageSrc} />}
-                                className="favori-card"
+                                className="card-container"
                             >
                                 <div className="card-content">
                                     <Meta title={item.title} description={item.description} />

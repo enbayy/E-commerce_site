@@ -41,11 +41,15 @@ function Navbar() {
             <Space className='space'>
                 <Link to={getRoutePath(ROUTES_ID.home)}>Home</Link>
                 <Link to={getRoutePath(ROUTES_ID.contact)}>Contact</Link>
-                <Badge color='pink' count={favoriItems.length}>
-                    <Link to={getRoutePath(ROUTES_ID.favorite)}>Favorites</Link>
+                <Badge
+                    color='wheat'
+                    count={favoriItems.length}
+                    overflowCount={99}
+                    className="custom-badge">
+                    <Link className='favorites' style={{ marginRight: '10px' }} to={getRoutePath(ROUTES_ID.favorite)}>Favorites</Link>
                 </Badge>
                 <div className="category-dropdown">
-                    <Link>Category</Link>
+                    <Link className='category' style={{ marginLeft: '20px' }}>Category</Link>
                     <div className="category-dropdown-content">
                         <Link to={getRoutePath(ROUTES_ID.tshirt)}>T-shirts</Link>
                         <Link to={getRoutePath(ROUTES_ID.pant)}>Pants</Link>
@@ -57,7 +61,11 @@ function Navbar() {
             </Space>
             <Space>
                 <Link to={getRoutePath(ROUTES_ID.skep)}>
-                    <Badge color='blue' count={cartItems.length}>
+                    <Badge
+                        color="wheat"
+                        count={cartItems.length}
+                        overflowCount={99}
+                        className="custom-badge">
                         <FaShoppingBasket className='icon' />
                     </Badge>
                 </Link>
