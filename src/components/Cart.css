@@ -3,7 +3,7 @@
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     text-align: center;
-    cursor: pointer;
+    cursor: auto;
     height: 650px;
     margin: 16px;
     transition: transform 0.2s;
@@ -73,7 +73,7 @@
 }
 
 .review-button {
-    background-color: #80e0a8;
+    background-color: #afb2b2;
     border-color: #80e0a8;
     border-radius: 20px;
     padding: 10px 20px;

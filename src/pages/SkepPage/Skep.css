@@ -11,7 +11,7 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
     cursor: auto;
-    height: 700px;
+    height: 660px;
 }
 
 .card-content {
@@ -31,14 +31,33 @@
     height: 400px;
 }
 
+.total-price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .total-price-container {
+    width: 400px;
     margin-top: 20px;
     padding: 10px;
-    background-color: #f0f0f0;
-    border: 1px solid #ddd;
+    background-color: #000000;
+    color: wheat;
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1.2rem;
+    border-radius: 20px;
+}
+
+.pay-button {
     font-weight: bold;
+    font-size: 1rem;
+    border: none;
+}
+
+.pay-button:hover {
+    background-color: wheat !important;
+    color: black !important;
+    border: none !important;
 }
 
 .quantity-container {
@@ -54,6 +73,6 @@
     font-weight: bold;
 }
 
-.ant-layout .ant-layout-footer {
-    background-color: white
+.ant-layout-footer.css-dev-only-do-not-override-98ntnt {
+    display: none !important;
 }

@@ -34,7 +34,6 @@ const SkepForm = () => {
 
     return (
         <div className="skep-container">
-            <h2 style={{ display: "flex", justifyContent: "center" }}>My Cart</h2>
             {cartItems.length > 0 ? (
                 <>
                     <Row gutter={16}>
@@ -59,9 +58,11 @@ const SkepForm = () => {
                             </Col>
                         ))}
                     </Row>
-                    <div className="total-price-container">
-                        <h3>Total Price: {totalPrice} TL</h3>
-                        <Button onClick={handlePay}>Pay</Button>
+                    <div className='total-price'>
+                        <div className="total-price-container">
+                            <h3>Total Price: {totalPrice} TL</h3>
+                            <Button className='pay-button' onClick={handlePay}>Pay</Button>
+                        </div>
                     </div>
                 </>
             ) : (
