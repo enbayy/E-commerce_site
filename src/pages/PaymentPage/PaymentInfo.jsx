@@ -52,7 +52,7 @@ function PaymentInfo({ onFinish, setUserInfo, userInfo }) {
         <div className='asd'>
             <Form style={{ padding: "50px" }} onFinish={handlePost} layout='vertical'>
                 <Form.Item
-                style={{marginTop:"50px"}}
+                    style={{ marginTop: "50px" }}
                     label="Card Owner"
                     name="cardName"
                     rules={[{ required: true, message: 'Please enter your name!' }]}
@@ -78,7 +78,7 @@ function PaymentInfo({ onFinish, setUserInfo, userInfo }) {
                         value={userInfo.cardNumber}
                         placeholder="0000 0000 0000 0000"
                         maxLength={19}
-                        style={{ width: "40%" }}
+                        style={{ width: "160px" }}
                     />
                 </Form.Item>
                 <Row gutter={16}>
@@ -107,7 +107,7 @@ function PaymentInfo({ onFinish, setUserInfo, userInfo }) {
                     </Col>
                 </Row>
                 <Form.Item style={{ display: "flex", justifyContent: "end" }}>
-                    <Button type="primary" htmlType="submit">
+                    <Button className='continue-button' type="primary" htmlType="submit">
                         Pay
                     </Button>
                 </Form.Item>

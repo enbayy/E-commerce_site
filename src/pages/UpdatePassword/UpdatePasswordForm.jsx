@@ -56,7 +56,7 @@ function UpdatePasswordForm() {
 
                 <Form.Item>
                     <div className='updatePasswordButton'>
-                        <Button type="primary" htmlType="submit">
+                        <Button className='updatePasswordButton' type="primary" htmlType="submit">
                             Update Password
                         </Button>
                     </div>

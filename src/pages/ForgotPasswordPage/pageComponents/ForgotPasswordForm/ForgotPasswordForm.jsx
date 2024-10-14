@@ -28,10 +28,11 @@ function ForgotPasswordForm({ onFinish, initialValues }) {
             <EmailInput
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                className
             />
             <Form.Item>
                 <div className='forgotPasswordButton'>
-                    <Button type="primary" htmlType="submit">
+                    <Button className='send-button' type="primary" htmlType="submit">
                         Send Code
                     </Button>
                     <a className='loginB' href="/login">Go Login</a>

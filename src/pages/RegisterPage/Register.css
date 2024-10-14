@@ -1,4 +1,6 @@
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -22,14 +24,14 @@ html, body, #root {
   width: 100%;
   text-align: center;
   margin-bottom: 5%;
-  height:75%;
+  height: 530px;
 }
 
 .register-title {
   font-size: 24px;
   margin-bottom: 20px;
   font-weight: bold;
-  color: #1890ff;
+  color: black;
 }
 
 .register-form {
@@ -46,30 +48,37 @@ html, body, #root {
   margin-top: 8%;
 }
 
-.register-button, .login-button {
+.register-button,
+.login-button {
   width: 35%;
-  height: 40px;
+  height: 32px;
   border-radius: 5px;
 }
 
 .register-button {
-  background-color: #1890ff;
   border: none;
-  color: white;
   margin-left: 53px;
+  background-color: wheat;
+  color: rgb(43, 43, 43);
 }
 
 .register-button:hover {
-  background-color: #40a9ff;
+  background-color: rgb(43, 43, 43) !important;
+  color: wheat !important;
 }
 
 .login-button {
-  background-color: #fff;
-  border: 1px solid #d9d9d9;
+  border: none;
   margin-left: 25px;
+  background-color: wheat;
+  color: rgb(43, 43, 43);
 }
 
 .login-button:hover {
-  border-color: #40a9ff;
-  color: #40a9ff;
+  background-color: rgb(43, 43, 43) !important;
+  color: wheat !important;
+}
+
+.ant-layout-footer {
+  background-color: #f0f2f5;
 }

@@ -21,7 +21,6 @@ function Cart({ id, imageSrc, title, description, price }) {
             removeFromCart(itemIndex);
             notification.success({
                 message: 'Removed from cart',
-                description: '',
                 placement: 'topRight',
                 duration: 3,
             });
@@ -29,7 +28,6 @@ function Cart({ id, imageSrc, title, description, price }) {
             addToCart(item);
             notification.success({
                 message: 'Added to cart',
-                description: '',
                 placement: 'topRight',
                 duration: 3,
             });
@@ -43,7 +41,6 @@ function Cart({ id, imageSrc, title, description, price }) {
             removeFromFavori(id);
             notification.success({
                 message: 'Removed from favorites',
-                description: '',
                 placement: 'topRight',
                 duration: 3,
             });
@@ -51,7 +48,6 @@ function Cart({ id, imageSrc, title, description, price }) {
             addToFavori(item);
             notification.success({
                 message: 'Added to favorites',
-                description: '',
                 placement: 'topRight',
                 duration: 3,
             });

@@ -11,7 +11,7 @@ body,
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f0f2f5;
+    background-color: #f0f2f5 !important;
 }
 
 .login-card {
@@ -28,7 +28,7 @@ body,
     font-size: 24px;
     margin-bottom: 20px;
     font-weight: bold;
-    color: #1890ff;
+    color: black;
 }
 
 .login-form {
@@ -44,9 +44,10 @@ body,
 }
 
 .login-form-forgot {
-    color: #1890ff;
+    color: rgb(251, 188, 70);
     transition: color 0.3s;
     margin-left: 94px;
+    border-bottom: 1px solid;
 }
 
 .login-form-forgot:hover {
@@ -57,15 +58,36 @@ body,
     width: 100%;
     border-radius: 5px;
     height: 40px;
-    background-color: #1890ff;
+    background-color: wheat;
+    color: rgb(43, 43, 43);
     border: none;
     transition: background-color 0.3s;
 }
 
 .login-form-button:hover {
-    background-color: #40a9ff;
+    background-color: rgb(43, 43, 43) !important;
+    color: wheat !important;
+}
+
+.custom-checkbox .ant-checkbox-wrapper {
+    color: wheat;
+}
+
+.login-register {
+    margin-top: 15px;
 }
 
 .login-register-link {
     margin-top: 15px;
+    color: rgb(251, 188, 70);
+    border-bottom: 1px solid;
+}
+
+.ant-layout-footer {
+    background-color: #f0f2f5 !important;
+}
+
+.custom-checkbox .ant-checkbox-checked .ant-checkbox-inner {
+    background-color: wheat;
+    border-color: wheat;
 }

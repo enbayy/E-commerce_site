@@ -20,12 +20,6 @@
     font-family: 'Arial', sans-serif;
 }
 
-.card-content h4 {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-}
-
 .ant-card-meta-description {
     height: 65px;
 }
@@ -49,12 +43,13 @@
     padding: 10px 20px;
     font-weight: bold;
     transition: background-color 0.3s;
+    border: none;
 }
 
-.favorite-button:hover {
-    background-color: rgb(255, 205, 113) !important;
-    color: black !important;
-    border: none !important;
+.favorite-button.in-favori,
+.basket-button.in-cart {
+    background-color: rgb(77, 77, 77);
+    color: rgb(255, 182, 46);
 }
 
 .basket-button {
@@ -63,9 +58,12 @@
     padding: 10px 20px;
     font-weight: bold;
     transition: background-color 0.3s;
+    border: none;
 }
 
-.basket-button:hover {
+.basket-button:hover,
+.favorite-button:hover,
+.review-button:hover {
     background-color: rgb(255, 205, 113) !important;
     color: black !important;
     border: none !important;
@@ -77,13 +75,8 @@
     padding: 10px 20px;
     font-weight: bold;
     transition: background-color 0.3s;
-    color: darkblue;
-}
-
-.review-button:hover {
-    background-color: rgb(255, 205, 113) !important;
-    color: black !important;
-    border: none !important;
+    color: black;
+    border: none;
 }
 
 .card-container img {

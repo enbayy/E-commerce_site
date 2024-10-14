@@ -7,6 +7,7 @@ import { ROUTES_ID } from '@/routing/routes_id';
 import login from '@/utils/login';
 import EmailInput from '../../../../components/EmailInput';
 import PasswordInput from '../../../../components/PasswordInput';
+import '../../Login.css'
 
 const LoginForm = () => {
     const navigate = useNavigate();
@@ -49,8 +50,9 @@ const LoginForm = () => {
                     />
                     <Form.Item className="login-options">
                         <Form.Item name="remember" valuePropName="checked" noStyle>
-                            <Checkbox>Remember me</Checkbox>
+                            <Checkbox className="custom-checkbox">Remember me</Checkbox>
                         </Form.Item>
+
                         <Link onClick={handleGoLogin} className="login-form-forgot">
                             Forgot password
                         </Link>
@@ -59,8 +61,8 @@ const LoginForm = () => {
                         <Button type="primary" htmlType="submit" className="login-form-button">
                             Log in
                         </Button>
-                        <div className="login-register-link">
-                            Or <Link to="/register">register now!</Link>
+                        <div className="login-register">
+                            Or <Link className="login-register-link" to="/register">register now!</Link>
                         </div>
                     </Form.Item>
                 </Form>

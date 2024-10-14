@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Steps } from 'antd';
 import ForgotResetPasswordForm from '../ForgotResetPassword/ForgotResetPasswordForm';
-import Successfully from '../../utils/Succesfuly';
+import Successfully from '../../utils/Successfully';
 import ForgotPasswordForm from './pageComponents/ForgotPasswordForm/ForgotPasswordForm';
 
 function Stepper() {

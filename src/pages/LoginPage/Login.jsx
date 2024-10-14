@@ -6,7 +6,6 @@ import { useLocation } from 'react-router-dom';
 import { getRouteTitle } from '../../routing/routes';
 import "./Login.css"
 
-
 function Login() {
   const location = useLocation();
   const title = getRouteTitle(location.pathname);
@@ -16,9 +15,7 @@ function Login() {
   };
 
   return (
-
     <MainLayout content={<LoginForm onFinish={handleFormSubmit} />} header={<Navbar />} title={title} />
-
   );
 }
 

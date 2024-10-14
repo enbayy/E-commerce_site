@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Form, Input, Button, Row, Col } from 'antd';
 import { useAuth } from '../../utils/AuthContext';
 import { fetchUserAttributes } from 'aws-amplify/auth';
+import "./PaymentStepper.css";
 
 function AddressForm({ onFinish, initialValues, setUserInfo, userInfo }) {
     const { isAuthenticated, isLoading } = useAuth();
@@ -65,7 +66,7 @@ function AddressForm({ onFinish, initialValues, setUserInfo, userInfo }) {
                         name="email"
                         rules={[{ required: true, type: 'email', message: 'Please enter a valid email address!' }]}
                     >
-                        <Input 
+                        <Input
                             value={email}
                             onChange={(e) => setUserInfo({ ...userInfo, email: e.target.value })}
                             disabled
@@ -97,7 +98,7 @@ function AddressForm({ onFinish, initialValues, setUserInfo, userInfo }) {
                 />
             </Form.Item>
             <Form.Item style={{ display: "flex", justifyContent: "end" }}>
-                <Button type="primary" htmlType="submit">
+                <Button className='continue-button' type="primary" htmlType="submit">
                     Continue
                 </Button>
             </Form.Item>

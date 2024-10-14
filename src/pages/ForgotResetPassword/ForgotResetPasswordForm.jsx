@@ -55,7 +55,7 @@ function ForgotResetPasswordForm({ onFinish, initialValues }) {
 
             <Form.Item>
                 <div className='forgotPasswordButton'>
-                    <Button type="primary" htmlType="submit">
+                    <Button className='reset-button' type="primary" htmlType="submit">
                         Reset Password
                     </Button>
                 </div>
