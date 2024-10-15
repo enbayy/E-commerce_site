@@ -170,7 +170,7 @@ const UserProfileForm = () => {
                         </Form.Item>
                     </div>
                     <Form.Item className='profile-buttons'>
-                        <Button type="primary" htmlType="submit">Update</Button>
+                        <Button className='update-button' type="primary" htmlType="submit">Update</Button>
                         <Button type="default" onClick={handleClear} style={{ marginLeft: '10px' }}>Clear</Button>
                     </Form.Item>
                 </Form>

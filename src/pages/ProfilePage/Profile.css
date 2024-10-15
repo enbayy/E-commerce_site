@@ -126,6 +126,16 @@ h2 {
     justify-content: space-around;
 }
 
+.update-button {
+    background-color: wheat;
+    color: rgb(43, 43, 43);
+}
+
+.update-button:hover {
+    background-color: rgb(43, 43, 43) !important;
+    color: wheat !important;
+}
+
 @media (max-width: 768px) {
     .saved-data-container {
         width: 95%;
